@@ -30,14 +30,14 @@ import asap.environment.AsapEnvironment;
  * @author dennisr
  * 
  */
-public class AsapRealizerStarter
+public class ZenoRealizerStarter
 {
 
 	//static { YarpInitializer.init(); }
 	
     protected JFrame mainJFrame = null;
 	
-    public AsapRealizerStarter(JFrame j, String spec) throws IOException
+    public ZenoRealizerStarter(JFrame j, String spec) throws IOException
     {
 		//GenericMiddlewareLoader.setGlobalPropertiesFile("defaultmiddleware.properties");
         Console.setEnabled(false);
@@ -105,7 +105,7 @@ public class AsapRealizerStarter
     {
     	String help = "Expecting commandline arguments in the form of \"-<argname> <arg>\".\nAccepting the following argnames: agentspec, middlewareprops";
     	
-        String spec = "Zeno/loaders/agentspec.xml";
+        String spec = "ZENO/loaders/agentspec.xml";
     	String propFile = "defaultmiddleware.properties";
     	
         if(args.length % 2 != 0){
@@ -126,6 +126,6 @@ public class AsapRealizerStarter
     	
 		GenericMiddlewareLoader.setGlobalPropertiesFile(propFile);
 		
-        AsapRealizerStarter demo = new AsapRealizerStarter(new JFrame("AsapRealizer Hmmm version"), spec);
+        ZenoRealizerStarter demo = new ZenoRealizerStarter(new JFrame("AsapRealizer Cristmas Greetings - Zeno"), spec);
     }
 }
