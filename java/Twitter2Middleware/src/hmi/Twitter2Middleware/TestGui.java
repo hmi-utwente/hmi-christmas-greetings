@@ -30,7 +30,7 @@ public class TestGui {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				// send
-				tf.Forward("fakeUser", textField.getText(), System.currentTimeMillis() / 1000L);
+				tf.Forward("fakeUser", textField.getText(), new String[]{}, System.currentTimeMillis() / 1000L);
 				System.out.println("Send: "+textField.getText());
 			}
 		});
