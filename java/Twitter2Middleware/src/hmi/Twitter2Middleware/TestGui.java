@@ -11,6 +11,7 @@ public class TestGui {
 	
 	public static void main(String[] args) {
 		TweetForwarder tf = new TweetForwarder();
+		tf.init();
 		new TestGui(tf);
 	}
 
@@ -29,8 +30,8 @@ public class TestGui {
 		sendButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				// send
-				tf.Forward("fakeUser", textField.getText(), new String[]{}, System.currentTimeMillis() / 1000L);
+				// send, TODO: add dropdown for keywords
+				tf.Forward("fakeUser", textField.getText(), new String[]{ "poem" }, System.currentTimeMillis() / 1000L);
 				System.out.println("Send: "+textField.getText());
 			}
 		});
