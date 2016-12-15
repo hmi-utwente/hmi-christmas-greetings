@@ -19,21 +19,21 @@ import nl.utwente.hmi.middleware.helpers.JSONHelper;
 import nl.utwente.hmi.middleware.loader.GenericMiddlewareLoader;
 import nl.utwente.hmi.middleware.worker.AbstractWorker;
 
-
+/**
+ * Simple class to "interpret" tweets, and generate BML for (multiple) agents
+ * The BML can contain speech and behaviours, and is sent to the BehaviourManager module.
+ * @author davisond
+ *
+ */
 public class TwitterInterpreter extends AbstractWorker implements MiddlewareListener {
   private static Logger logger = LoggerFactory.getLogger(TwitterInterpreter.class.getName());
 
 	private static final String INPUT_TOPIC = "/topic/Tweets";
 	private static final String OUTPUT_TOPIC = "/topic/BehaviourRequests";
 	
-	private static final String BML_STRING = "<bml id=\"bml1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\" xmlns:sze=\"http://hmi.ewi.utwente.nl/zenoengine\">$bmlcontent$</bml>"; 
-	private static final String SPEECH_STRING = "<speech id=\"speech1\" start=\"0\"><text>$speechtext$</text></speech>"; 
-	
 	private Map<String,Agent> agents;
 	
 	private Middleware middleware;
-
-	private JSONHelper jh;
 
 	private ObjectMapper om;
 	
@@ -41,14 +41,15 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 		super();
 	}
 
+	/**
+	 * init the middleware instance, create the agent definitions, etc
+	 */
 	public void init() {
 		om = new ObjectMapper();
 
 		agents = new HashMap<String,Agent>();
-		agents.put("armandia", new Agent("/topic/ASAPArmandiaBmlRequest", "/topic/ASAPArmandiaBmlFeedback"));
-		agents.put("zeno", new Agent("/topic/ASAPZenoBmlRequest", "/topic/ASAPZenoBmlFeedback"));
-		
-		jh = new JSONHelper();
+		agents.put("armandia", new Armandia("/topic/ASAPArmandiaBmlRequest", "/topic/ASAPArmandiaBmlFeedback"));
+		agents.put("zeno", new Zeno("/topic/ASAPZenoBmlRequest", "/topic/ASAPZenoBmlFeedback"));
 		
 		Properties ps = new Properties();
 		ps.put("iTopic", INPUT_TOPIC);
@@ -82,19 +83,23 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 		
 		if(!jn.path("time").isMissingNode() && !jn.path("user").isMissingNode() && !jn.path("content").isMissingNode()){
 			Tweet t = new Tweet(Long.parseLong(jn.path("time").asText()), jn.path("user").asText(), jn.path("content").asText());
-			
-			String speech = SPEECH_STRING.replace("$speechtext$", t.getContent());
-			String bml = BML_STRING.replace("$bmlcontent$", speech);
-			
-			//TODO: choose an agent at random, or based on a hashtag #zeno or something
-			Agent a = agents.get("armandia");
-			a.setBml(bml);
-			
-			ArrayNode requests = om.createArrayNode();
-			requests.add(a.buildRequest());
-			
-			middleware.sendData(requests);
+			interpretTweet(t);
 		}
+	}
+	
+	/**
+	 * Here we look at the content of the tweet to see which agent should do what
+	 * Some agents may generate additional nonverbal BML that can be based on the speech
+	 * @param t the tweet to interpret
+	 */
+	private void interpretTweet(Tweet t){
+		//TODO: choose an agent at random, or based on a hashtag #zeno or #armandia or something
+		Agent a = agents.get("armandia");
+		
+		ArrayNode requests = om.createArrayNode();
+		requests.add(a.buildRequest(t.getContent()));
+		
+		middleware.sendData(requests);
 	}
 	
 	
