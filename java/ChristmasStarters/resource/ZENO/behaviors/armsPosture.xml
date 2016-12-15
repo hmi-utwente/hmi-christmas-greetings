@@ -1,0 +1,25 @@
+<bml id="test" xmlns="http://www.bml-initiative.org/bml/bml-1.0">
+<posture id="leftUp" start="1" end="leftUp:start+2">
+	<pose part="LEFT_ARM" lexeme="raise"/>
+</posture>
+
+<posture id="leftDown" start="leftUp:end+1" end="leftDown:start+2">
+	<pose part="LEFT_ARM" lexeme="neutral"/>
+</posture>
+
+<posture id="rightUp" start="leftDown:end+2" end="rightUp:start+2">
+	<pose part="RIGHT_ARM" lexeme="raise"/>
+</posture>
+
+<posture id="rightDown" start="rightUp:end+1" end="rightDown:start+2">
+	<pose part="RIGHT_ARM" lexeme="neutral"/>
+</posture>
+
+<posture id="bothUp" start="rightDown:end+2" end="bothUp:start+2">
+	<pose part="ARMS" lexeme="raise"/>
+</posture>
+
+<posture id="bothDown" start="bothUp:end+1" end="bothDown:start+2">
+	<pose part="ARMS" lexeme="neutral"/>
+</posture>
+</bml>

@@ -1,0 +1,6 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+
+<gesture id="g1" start="0" mode="LEFT_HAND" lexeme="raise_hands"/>
+<gesture id="g2" start="5" mode="RIGHT_HAND" lexeme="raise_hands"/>
+<gesture id="g3" start="10" mode="BOTH_HANDS" lexeme="raise_hands"/>
+</bml> 

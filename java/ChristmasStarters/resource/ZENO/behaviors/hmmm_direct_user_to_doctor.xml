@@ -1,0 +1,21 @@
+<bml id="$id$" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine" composition="REPLACE">
+    <speech id="direct_user_to_doctor" start="0">
+        <text>
+            Please go the $interactionContext.currentInterlocutor.choice$ for doctor
+            $interactionContext.currentInterlocutor.targetDoctor$.
+            <sync id="point_direction"/>
+        </text>
+
+        <!-- only for Mary voices. -->
+        <description priority="10" type="maryxml">
+            <maryxml xmlns="http://mary.dfki.de/2002/MaryXML">
+                Please go the $interactionContext.currentInterlocutor.choice$ for doctor
+                $interactionContext.currentInterlocutor.targetDoctor$.
+                <mark name="point_direction"/>
+            </maryxml>
+        </description>
+    </speech>
+
+    <sze:animation id="directArm1" animation="hmmm_direct_$interactionContext.currentInterlocutor.choice$" start="direct_user_to_doctor:point_direction"/>
+    <sze:animation id="directHead1" animation="hmmm_head_point_$interactionContext.currentInterlocutor.choice$" start="direct_user_to_doctor:point_direction"/>
+</bml>

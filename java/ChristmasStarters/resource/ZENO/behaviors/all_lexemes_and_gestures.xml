@@ -1,0 +1,90 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+	<speech id="speech1" start="1">
+		<text>Hello! This example shows all my supported behaviors.</text>
+    </speech>
+    
+    <!-- first, show all facial lexemes -->
+	<speech id="lexemesSpeech" start="speech1:end">
+		<text>Firstly, I'll show all my facial expressions using face lexemes</text>
+    </speech>
+	<posture id="default1" start="lexemesSpeech:start">
+		<pose part="WHOLEBODY" lexeme="neutral"/>
+	</posture>
+    <faceLexeme lexeme="sad" amount="1" id="fl1" start="lexemesSpeech:end+2"/>
+    <faceLexeme lexeme="happy" amount="0.5" id="fl2" start="lexemesSpeech:end+6"/>
+    <faceLexeme lexeme="angry" amount="1" id="fl3" start="lexemesSpeech:end+10"/>
+    <faceLexeme lexeme="confused" amount="1" id="fl4" start="lexemesSpeech:end+14"/>
+    <faceLexeme lexeme="surprised" amount="1" id="fl5" start="lexemesSpeech:end+18"/>
+
+	<!-- now, the expression postures -->
+	<speech id="gesturesSpeech1" start="lexemesSpeech:end+20">
+		<text>Secondly, I'll show all my expressions using gestures</text>
+    </speech>
+	<posture id="default2" start="gesturesSpeech1:start">
+		<pose part="WHOLEBODY" lexeme="neutral"/>
+	</posture>
+	<gesture id="g1" start="gesturesSpeech1:end+0" lexeme="happy"/>
+	<gesture id="g2" start="gesturesSpeech1:end+5" lexeme="sad"/>
+	<gesture id="g3" start="gesturesSpeech1:end+10" lexeme="angry"/>
+	<gesture id="g4" start="gesturesSpeech1:end+15" lexeme="surprised"/>
+	
+	<!-- now, some hand/arm poses -->
+	<speech id="gesturesSpeech2" start="gesturesSpeech1:end+20">
+		<text>Thirdly, I'll demonstrate my arm poses</text>
+    </speech>
+	<posture id="default3" start="gesturesSpeech2:start">
+		<pose part="WHOLEBODY" lexeme="neutral"/>
+	</posture>
+	
+	<posture id="leftUp" start="gesturesSpeech2:end+1" end="leftUp:start+2">
+		<pose part="LEFT_ARM" lexeme="raise"/>
+	</posture>
+	<posture id="leftDown" start="leftUp:end+1" end="leftDown:start+2">
+		<pose part="LEFT_ARM" lexeme="neutral"/>
+	</posture>
+	
+	<posture id="rightUp" start="leftDown:end+2" end="rightUp:start+2">
+		<pose part="RIGHT_ARM" lexeme="raise"/>
+	</posture>
+	<posture id="rightDown" start="rightUp:end+1" end="rightDown:start+2">
+		<pose part="RIGHT_ARM" lexeme="neutral"/>
+	</posture>
+	
+	<posture id="bothUp" start="rightDown:end+2" end="bothUp:start+2">
+		<pose part="ARMS" lexeme="raise"/>
+	</posture>
+	<posture id="bothDown" start="bothUp:end+1" end="bothDown:start+2">
+		<pose part="ARMS" lexeme="neutral"/>
+	</posture>
+	
+	<!-- then, some gazing gestures -->
+	<speech id="gesturesSpeech3" start="gesturesSpeech2:end+20">
+		<text>Fourthly, I'll demonstrate my gazing gestures</text>
+    </speech>
+	<posture id="default4" start="gesturesSpeech3:start">
+		<pose part="WHOLEBODY" lexeme="neutral"/>
+	</posture>
+	
+	<posture id="left" start="gesturesSpeech3:end+1" end="left:start+2">
+		<pose part="HEAD" lexeme="turn-left"/>
+	</posture>
+	
+	<posture id="right" start="left:end+1" end="right:start+2">
+		<pose part="HEAD" lexeme="turn-right"/>
+	</posture>
+	
+	<posture id="neutral" start="right:end+2" end="neutral:start+2">
+		<pose part="HEAD" lexeme="neutral"/>
+	</posture>
+
+	<!-- finally, do the monkey dance! -->
+	<speech id="monkeydanceSpeech" start="gesturesSpeech3:end+15">
+		<text>Finally, let's dance!</text>
+    </speech>
+	<posture id="default5" start="monkeydanceSpeech:start">
+		<pose part="WHOLEBODY" lexeme="neutral"/>
+	</posture>
+	<gesture id="mdg1" start="monkeydanceSpeech:end+2" lexeme="monkey_dance"/>
+
+
+</bml> 

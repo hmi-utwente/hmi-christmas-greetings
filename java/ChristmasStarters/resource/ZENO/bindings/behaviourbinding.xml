@@ -1,0 +1,339 @@
+<zenobinding>
+   
+   <!-- Zeno-specific bindings -->
+    <ZenoUnitSpec type="speak" namespace="http://hmi.ewi.utwente.nl/zenoengine">
+        <constraints>
+        </constraints>
+        <parametermap>
+            <parameter src="text" dst="text"/>
+        </parametermap>
+        <ZenoUnit type="SpeakZU"/>
+    </ZenoUnitSpec>
+   
+    <ZenoUnitSpec type="animation" namespace="http://hmi.ewi.utwente.nl/zenoengine">
+        <constraints>
+        </constraints>
+        <parametermap>
+            <parameter src="animation" dst="animation"/>
+        </parametermap>
+        <ZenoUnit type="AnimationZU"/>
+    </ZenoUnitSpec>
+
+        <ZenoUnitSpec type="lookAt" namespace="http://hmi.ewi.utwente.nl/zenoengine">
+        <constraints>
+        </constraints>
+        <parametermap>
+            <parameter src="x" dst="x"/>
+            <parameter src="y" dst="y"/>
+        </parametermap>
+        <ZenoUnit type="LookAtZU"/>
+    </ZenoUnitSpec>
+
+    <!-- Custom face expressions from the pose directory -->
+    <ZenoUnitSpec type="faceLexeme">
+        <constraints>
+            <constraint name="lexeme" value="neutral"/>
+        </constraints>
+        <parametermap>
+            <parameter src="amount" dst="intensity"/>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="neutralface"/>
+        </parameterdefaults>
+        <ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+    <ZenoUnitSpec type="faceLexeme">
+        <constraints>
+            <constraint name="lexeme" value="happy"/>
+        </constraints>
+        <parametermap>
+            <parameter src="amount" dst="intensity"/>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="happyface"/>
+        </parameterdefaults>
+        <ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+    <ZenoUnitSpec type="faceLexeme">
+        <constraints>
+            <constraint name="lexeme" value="sad"/>
+        </constraints>
+        <parametermap>
+            <parameter src="amount" dst="intensity"/>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="sadface"/>
+        </parameterdefaults>
+        <ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+    <ZenoUnitSpec type="faceLexeme">
+        <constraints>
+            <constraint name="lexeme" value="angry"/>
+        </constraints>
+        <parametermap>
+            <parameter src="amount" dst="intensity"/>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="angryface"/>
+        </parameterdefaults>
+        <ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+    <ZenoUnitSpec type="faceLexeme">
+        <constraints>
+            <constraint name="lexeme" value="confused"/>
+        </constraints>
+        <parametermap>
+            <parameter src="amount" dst="intensity"/>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="confusedface"/>
+        </parameterdefaults>
+        <ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+    <ZenoUnitSpec type="faceLexeme">
+        <constraints>
+            <constraint name="lexeme" value="amazed"/>
+        </constraints>
+        <parametermap>
+            <parameter src="amount" dst="intensity"/>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="amazedface"/>
+        </parameterdefaults>
+        <ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+    <ZenoUnitSpec type="faceLexeme">
+        <constraints>
+            <constraint name="lexeme" value="surprised"/>
+        </constraints>
+        <parametermap>
+            <parameter src="amount" dst="intensity"/>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="amazedface"/>
+        </parameterdefaults>
+        <ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+                    
+    <!-- mapping of core BML behaviors -->
+    <ZenoUnitSpec type="faceLexeme">
+        <constraints>
+            <constraint name="lexeme" value="BLINK"/>
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="animation" value="blink"/>
+        </parameterdefaults>
+        <ZenoUnit type="AnimationZU"/>
+    </ZenoUnitSpec>
+    
+   <!-- Basic head gestures -->
+    <ZenoUnitSpec type="head" >
+        <constraints>
+            <constraint name="lexeme" value="NOD"/>
+        </constraints>
+        <parameterdefaults>
+            <parameterdefault name="animation" value="Reaction Human - Agree"/>
+        </parameterdefaults>
+        <ZenoUnit type="AnimationZU"/>
+    </ZenoUnitSpec>
+   
+    <ZenoUnitSpec type="head" >
+        <constraints>
+            <constraint name="lexeme" value="SHAKE"/>
+        </constraints>
+        <parameterdefaults>
+            <parameterdefault name="animation" value="Reaction Human - Disagree"/>
+        </parameterdefaults>
+        <ZenoUnit type="AnimationZU"/>
+    </ZenoUnitSpec>
+   
+    <!-- GESTURES Mapping of gestures to Zeno animation sequences -->
+    <ZenoUnitSpec type="gesture">
+        <constraints>
+            <constraint name="lexeme" value="happy"/>
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="animation" value="victory"/>
+        </parameterdefaults>
+        <ZenoUnit type="AnimationZU"/>
+    </ZenoUnitSpec>
+    
+    <ZenoUnitSpec type="gesture">
+        <constraints>
+            <constraint name="lexeme" value="sad"/>
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="animation" value="disappointed"/>
+        </parameterdefaults>
+        <ZenoUnit type="AnimationZU"/>
+    </ZenoUnitSpec>
+    
+    <ZenoUnitSpec type="gesture">
+        <constraints>
+            <constraint name="lexeme" value="angry"/>
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="animation" value="angry"/>
+        </parameterdefaults>
+        <ZenoUnit type="AnimationZU"/>
+    </ZenoUnitSpec>
+    
+    <ZenoUnitSpec type="gesture">
+        <constraints>
+            <constraint name="lexeme" value="surprised"/>
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="animation" value="surprised"/>
+        </parameterdefaults>
+        <ZenoUnit type="AnimationZU"/>
+    </ZenoUnitSpec>
+    
+    <ZenoUnitSpec type="gesture">
+        <constraints>
+            <constraint name="lexeme" value="monkey_dance"/>
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="animation" value="theMonkeyDance"/>
+        </parameterdefaults>
+        <ZenoUnit type="AnimationZU"/>
+    </ZenoUnitSpec>
+    
+    
+    <!-- BODY POSES Static body poses -->
+    <ZenoUnitSpec type="posture">
+        <constraints>
+            <constraint name="WHOLEBODY" value="neutral"/>            
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="animation" value="Default"/>
+        </parameterdefaults>
+        <ZenoUnit type="AnimationZU"/>
+    </ZenoUnitSpec>   
+     
+    <ZenoUnitSpec type="posture">
+        <constraints>
+            <constraint name="HEAD" value="turn-left"/>            
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="x" value="0.2"/>
+            <parameterdefault name="y" value="0.6"/>
+        </parameterdefaults>
+    	<ZenoUnit type="LookAtZU"/>
+    </ZenoUnitSpec>
+    <ZenoUnitSpec type="posture">
+        <constraints>
+            <constraint name="HEAD" value="turn-right"/>            
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="x" value="0.8"/>
+            <parameterdefault name="y" value="0.6"/>
+        </parameterdefaults>
+    	<ZenoUnit type="LookAtZU"/>
+    </ZenoUnitSpec>
+    <ZenoUnitSpec type="posture">
+        <constraints>
+            <constraint name="HEAD" value="neutral"/>            
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="x" value="0.5"/>
+            <parameterdefault name="y" value="0.6"/>
+        </parameterdefaults>
+    	<ZenoUnit type="LookAtZU"/>
+    </ZenoUnitSpec>
+    
+    <ZenoUnitSpec type="posture">
+        <constraints>
+            <constraint name="LEFT_ARM" value="raise"/>            
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="raise_left_arm"/>
+            <parameterdefault name="intensity" value="1"/>
+        </parameterdefaults>
+    	<ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+    <ZenoUnitSpec type="posture">
+        <constraints>
+            <constraint name="LEFT_ARM" value="neutral"/>            
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="raise_left_arm"/>
+            <parameterdefault name="intensity" value="0"/>
+        </parameterdefaults>
+    	<ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+    
+    <ZenoUnitSpec type="posture">
+        <constraints>
+            <constraint name="RIGHT_ARM" value="raise"/>            
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="raise_right_arm"/>
+            <parameterdefault name="intensity" value="1"/>
+        </parameterdefaults>
+    	<ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+    <ZenoUnitSpec type="posture">
+        <constraints>
+            <constraint name="RIGHT_ARM" value="neutral"/>            
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="raise_right_arm"/>
+            <parameterdefault name="intensity" value="0"/>
+        </parameterdefaults>
+    	<ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+    
+    <ZenoUnitSpec type="posture">
+        <constraints>
+            <constraint name="ARMS" value="raise"/>            
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="raise_arms"/>
+            <parameterdefault name="intensity" value="1"/>
+        </parameterdefaults>
+    	<ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+    <ZenoUnitSpec type="posture">
+        <constraints>
+            <constraint name="ARMS" value="neutral"/>            
+        </constraints>
+        <parametermap>
+        </parametermap>
+        <parameterdefaults>
+            <parameterdefault name="pose" value="raise_arms"/>
+            <parameterdefault name="intensity" value="0"/>
+        </parameterdefaults>
+    	<ZenoUnit type="PoseZU"/>
+    </ZenoUnitSpec>
+    
+</zenobinding>

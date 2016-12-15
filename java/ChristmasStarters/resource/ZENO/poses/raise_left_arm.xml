@@ -1,0 +1,7 @@
+<Pose>
+	<!-- pose file format: for each motor, the pose for intensity=0 is 
+		 0.5+baseoffset; for intensity=1 the value is 0.5+baseoffset+increment.
+	-->
+    <Value name="Left Upper"  increment="0.3" baseoffset="-0.25"/>
+    <Value name="Left Lower"  increment="0.3" baseoffset="0.0"/>
+</Pose>

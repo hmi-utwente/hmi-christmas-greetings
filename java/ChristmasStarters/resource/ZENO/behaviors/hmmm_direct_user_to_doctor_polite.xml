@@ -1,0 +1,34 @@
+<bml id="$id$" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine" composition="REPLACE">
+    <speech id="direct_user_polite" start="0">
+        <text>
+            My apologies.
+            Maybe I was unclear.
+            <sync id="look_neutral"/>
+            I would like to communicate in which direction you should head.
+            Please go the $interactionContext.currentInterlocutor.choice$
+            for doctor $interactionContext.currentInterlocutor.targetDoctor$.
+            <sync id="point_direction"/>
+        </text>
+
+        <!-- only for Mary voices. -->
+        <description priority="10" type="maryxml">
+            <maryxml xmlns="http://mary.dfki.de/2002/MaryXML">
+                My apologies.
+                Maybe I was unclear.
+                <boundary duration="500"/>
+                <mark name="look_neutral"/>
+                I would like to communicate in which direction you should head.
+                <boundary duration="500"/>
+                Please go the $interactionContext.currentInterlocutor.choice$
+                for doctor $interactionContext.currentInterlocutor.targetDoctor$.
+                <mark name="point_direction"/>
+            </maryxml>
+        </description>
+    </speech>
+
+    <faceLexeme lexeme="sad" amount="1" id="flSad" start="0" end="0.1"/>
+    <faceLexeme lexeme="neutral" amount="1" id="flNeutral" start="direct_user_polite:look_neutral" end="direct_user_polite:look_neutral + 0.1"/>
+
+    <sze:animation id="directArm1" animation="hmmm_direct_$interactionContext.currentInterlocutor.choice$" start="direct_user_polite:point_direction"/>
+    <sze:animation id="directHead1" animation="hmmm_head_point_$interactionContext.currentInterlocutor.choice$" start="direct_user_polite:point_direction"/>
+</bml>

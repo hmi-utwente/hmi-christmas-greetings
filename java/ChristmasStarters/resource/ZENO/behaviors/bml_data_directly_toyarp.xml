@@ -1,0 +1,7 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:mwe="http://hmi.ewi.utwente.nl/middlewareengine">
+
+	<mwe:sendData id="behavior1" start="0">
+    <settest><params><param1><hello><string>innerrec</string></hello><int>1</int><string>hi</string><string>hi2</string></param1><param2><int>22</int></param2></params></settest>
+    </mwe:sendData>
+	
+</bml> 

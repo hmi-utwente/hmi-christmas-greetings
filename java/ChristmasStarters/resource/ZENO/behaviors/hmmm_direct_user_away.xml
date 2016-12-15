@@ -1,0 +1,26 @@
+<bml id="$id$" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine" composition="REPLACE">
+
+    <speech id="direct_user_away" start="0">
+        <text>
+            I'm sorry, I'm not able to help you out.
+            Please find a nearby human for further assistance.
+            <sync id="look_neutral"/>
+        </text>
+
+        <!-- only for Mary voices. -->
+        <description priority="10" type="maryxml">
+            <maryxml xmlns="http://mary.dfki.de/2002/MaryXML">
+                I'm sorry, I'm not able to help you out.
+                <boundary duration="500"/>
+                Please find a nearby human for further assistance.
+                <mark name="look_neutral"/>
+            </maryxml>
+        </description>
+    </speech>
+
+    <faceLexeme lexeme="sad" amount="1" id="flSad" start="0" end="0.1"/>
+    <faceLexeme lexeme="neutral" amount="1" id="flNeutral" start="direct_user_away:look_neutral" end="direct_user_away:look_neutral + 0.1"/>
+
+    <!-- Lower gaze by looking down. -->
+    <sze:animation id="look_down" animation="hmmm_look_down" start="0"/>
+</bml>

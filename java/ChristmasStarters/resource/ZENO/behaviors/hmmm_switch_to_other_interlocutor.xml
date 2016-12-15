@@ -1,0 +1,19 @@
+<bml id="$id$" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine" composition="REPLACE">
+    <speech id="switch_instruction" start="0">
+        <text>
+            I am sorry, it seems that the other person is in dire need of assistance.
+            I will come back to you afterwards.
+            Please wait.
+        </text>
+
+        <!-- only for Mary voices. -->
+        <description priority="10" type="maryxml">
+            <maryxml xmlns="http://mary.dfki.de/2002/MaryXML">
+                I am sorry, it seems that the other person is in dire need of assistance.
+                <boundary duration="500"/>
+                I will come back to you afterwards.
+                Please wait.
+            </maryxml>
+        </description>
+    </speech>
+</bml>

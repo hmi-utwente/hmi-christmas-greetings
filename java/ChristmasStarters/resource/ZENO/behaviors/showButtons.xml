@@ -1,0 +1,3 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:ste="http://hmi.ewi.utwente.nl/stomptabletengine">
+<ste:showbuttons id="btn1" ids="b1;b2;b3" values="button 1;button 2;button 3" text="text text text" start="1" stop="3" />
+</bml> 

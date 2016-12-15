@@ -1,0 +1,25 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+
+    <sze:animation id="anim1" animation="Default" start="0"/>
+
+    <faceLexeme lexeme="sad" amount="1" id="fl1" start="2"/>
+    
+    <sze:animation id="anim2" animation="Default" start="4"/>
+
+    <faceLexeme lexeme="happy" amount="0.5" id="fl2" start="6"/>
+
+    <sze:animation id="anim3" animation="Default" start="8"/>
+
+    <faceLexeme lexeme="angry" amount="1" id="fl3" start="10"/>
+
+    <sze:animation id="anim4" animation="Default" start="12"/>
+
+    <faceLexeme lexeme="confused" amount="1" id="fl4" start="14"/>
+
+    <sze:animation id="anim5" animation="Default" start="16"/>
+
+    <faceLexeme lexeme="amazed" amount="1" id="fl5" start="18"/>
+
+    <sze:animation id="anim6" animation="Default" start="20"/>
+
+</bml> 

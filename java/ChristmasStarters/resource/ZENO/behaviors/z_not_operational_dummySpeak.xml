@@ -1,0 +1,3 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+<sze:dummySpeak id="speak1" duration="10" start="0" end="10"/>
+</bml> 

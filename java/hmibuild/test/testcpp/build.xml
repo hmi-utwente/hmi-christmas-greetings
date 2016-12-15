@@ -1,0 +1,27 @@
+<project xmlns:au="antlib:org.apache.ant.antunit">
+  <import file="../../build.xml" />
+  
+  <!-- is called prior to the test -->
+  <target name="setUp">
+  </target>
+
+  <!-- is called after the test, even if that caused an error -->
+  <target name="tearDown">  
+    <delete includeemptydirs="true" failonerror="false">
+      <fileset dir="build" includes="**/*"/>
+    </delete>
+	  <delete dir="privateprops" failonerror="false"/>
+	  <delete dir="dist" failonerror="false"/>
+  </target>
+
+  <target name="antunittestClean">
+    <antcall target="clean"/>    
+  </target>
+  
+  <!-- the actual test case -->
+  <target name="antunittestCompileCpp">
+	  <antcall target="compile"/>
+	  <au:assertFileExists file="build/CMakeCache.txt"/>    
+    <au:plainlistener/>    
+  </target>
+</project>

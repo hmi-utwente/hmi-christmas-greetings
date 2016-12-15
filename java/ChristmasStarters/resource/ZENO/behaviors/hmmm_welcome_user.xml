@@ -1,0 +1,18 @@
+<bml id="$id$" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine" composition="REPLACE">
+    <speech id="welcome" start="2.5">
+        <text>
+            Hello.
+            My name is Zeno.
+        </text>
+
+        <!-- only for Mary voices. -->
+        <description priority="10" type="maryxml">
+            <maryxml xmlns="http://mary.dfki.de/2002/MaryXML">
+                Hello.
+                My name is Zeno.
+            </maryxml>
+        </description>
+    </speech>
+
+    <sze:animation id="wave" animation="hmmm_wave" start="0"/>
+</bml>

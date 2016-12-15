@@ -1,0 +1,29 @@
+<project xmlns:au="antlib:org.apache.ant.antunit" default="test">
+    <taskdef 
+            uri="antlib:org.apache.ant.antunit"
+            resource="org/apache/ant/antunit/antlib.xml">
+            <classpath>
+              <pathelement location="ant-antunit-1.2-hmi.jar"/>
+            </classpath>
+          </taskdef>
+	
+  
+  <target name="test">
+    <delete failonerror="false" dir="reports"/> 
+    <mkdir dir="reports"/>
+    <au:antunit failOnError="false">
+      <fileset dir="." includes="test*/build.xml"/>      
+      <au:xmllistener toDir="reports"/>      
+      <au:plainlistener/>
+    </au:antunit>	  
+  </target>
+  
+  <target name="testreport" depends="test">
+    <junitreport todir="./reports">
+       <fileset dir="./reports">
+        <include name="TEST-*.xml"/>
+      </fileset>
+      <report format="frames"  styledir="styles" todir="./reports/html"/>
+    </junitreport>
+  </target>
+</project>

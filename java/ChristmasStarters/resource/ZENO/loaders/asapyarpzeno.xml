@@ -1,0 +1,77 @@
+<AsapVirtualHuman>
+    <!--  this loader file requires the zenoengine and its resource directory -->
+  
+	<Loader id="realizer" loader="asap.realizerembodiments.AsapRealizerEmbodiment">
+	  <BMLParser>
+	    <BMLAttributeExtension class="asap.bml.ext.bmla.BMLABMLBehaviorAttributes"/>      
+	  </BMLParser>
+	
+	  <BMLScheduler>
+	    <SchedulingHandler class="asap.realizer.scheduler.BMLASchedulingHandler" schedulingStrategy="asap.realizer.scheduler.SortedSmartBodySchedulingStrategy"/>
+	  </BMLScheduler>
+	  <PipeLoader id="pipe" loader="asap.yarpadapters.loader.YARPToBMLRealizerAdapterLoader">
+		  <ServerOptions internalbmlport="/ASAPRealizer/bmlRequest:i" externalbmlport="/DialogueController/BML:o" internalfeedbackport="/ASAPRealizer/bmlFeedback:o" externalfeedbackport="/DialogueController/bmlFeedback:i"/>
+	  </PipeLoader>
+	  <!-- PipeLoader id="visualizerpipe" loader="asap.bmlflowvisualizer.loader.AsapBMLFlowVisualizerPortLoader"/ -->
+	</Loader>
+      
+  	<Loader id="guiembodiment" loader="asap.realizerembodiments.JFrameEmbodiment">
+        <BmlUI demoscriptresources="bmlexamples"/>
+        <FeedbackUI/>
+    </Loader>
+
+  <!-- Blinkemitter that sens small blink animations every now and then -->
+  <Loader id="blinkengine" 
+          loader="asap.emitterengine.loader.EmitterEngineLoader">
+    <EmitterInfo class="asap.blinkemitter.BlinkEmitterInfo"/>
+  </Loader>
+
+    <!--  
+    <Loader id="frame1" loader="hmi.jcomponentenvironment.loader.JFrameLoader"><JFrame title="BML flow visualization" width="1024" height="768"/></Loader>
+
+    <Loader id="bmlvisuipanel" loader="hmi.jcomponentenvironment.loader.JComponentEmbodimentLoader">
+        <JComponent id="frame1"/>             
+    </Loader>
+    
+    <Loader id="bmlvisui" loader="asap.bmlflowvisualizer.loader.BMLFlowVisualizaterSwingUILoader" requiredloaders="bmlvisuipanel"/>
+    -->
+    
+    <Loader id="zenoembodiment" loader="asap.zeno.embodiment.ZenoEmbodiment" requiredloaders="guiembodiment"/>
+  
+    <Loader id="zenoengine" loader="asap.zeno.loader.ZenoEngineLoader" requiredloaders="zenoembodiment">
+        <ZenoBinding basedir="" resources="easelbindings" filename="easelzenobinding.xml"/>
+    </Loader>
+    
+    <Loader id="middlewareembodiment" loader="asap.middlewareengine.embodiment.MiddlewareEmbodiment" requiredloaders="guiembodiment">
+        <MiddlewareSpec class="nl.utwente.hmi.middleware.yarp.YARPMiddlewareLoader">
+         <Property name="yarpEPortName" value="/noname"/><!-- the other pport that we should connect our input to -->
+         <Property name="yarpIPortName" value="/noname"/><!-- the port on which to listen for inpu. in this case we're not interested in reading (yet) t -->
+         <Property name="oPortName" value="/ASAPRealizer/Data:o"/><!-- the port on which we write -->
+        </MiddlewareSpec>
+    </Loader>
+  
+    <Loader id="middlewareengine" loader="asap.middlewareengine.engine.MiddlewareEngineLoader" requiredloaders="middlewareembodiment">
+        <MiddlewareBinding basedir="" resources="easelbindings" filename="easelmiddlewarebinding.xml"/>
+    </Loader>
+
+   <Loader id="ttsbinding" loader="asap.marytts5binding.loader.MaryTTSBindingLoader">
+        <PhonemeToVisemeMapping resources="phoneme2viseme/" filename="sampade2ikp.xml"/>
+   </Loader>
+
+   <Loader id="speechengine" loader="asap.speechengine.loader.SpeechEngineLoader" requiredloaders="ttsbinding,guiembodiment">
+	   <Voice factory="WAV_TTS"/>
+	   <SpeechUI/>
+   </Loader>
+   
+   <!-- Engine for playing audio files, nice for sound effects (e.g., clapping) or for prerecorded speech fragments -->
+   <Loader id="audioengine" loader="asap.audioengine.loader.AudioEngineLoader"/>
+   
+    <BMLRouting>
+        <Route behaviourclass="saiba.bml.core.FaceLexemeBehaviour" engineid="zenoengine"/>
+        <Route behaviourclass="saiba.bml.core.ext.FaceFacsBehaviour" engineid="zenoengine"/>
+        <Route behaviourclass="saiba.bml.core.GestureBehaviour" engineid="zenoengine"/>
+        <Route behaviourclass="saiba.bml.core.GazeBehaviour" engineid="zenoengine"/>
+        <Route behaviourclass="saiba.bml.core.PointingBehaviour" engineid="zenoengine"/>
+	</BMLRouting>
+
+</AsapVirtualHuman>

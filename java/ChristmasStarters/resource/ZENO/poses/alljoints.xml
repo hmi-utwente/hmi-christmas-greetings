@@ -1,0 +1,26 @@
+<Pose>
+	<!-- pose file format: for each motor, the pose for intensity=0 is 
+		 0.5+baseoffset; for intensity=1 the value is 0.5+baseoffset+increment.
+	-->
+    <Value name="Brows"       increment="0.1" baseoffset="0"/>
+    <Value name="Eye Turn"    increment="0.1" baseoffset="0"/>
+    <Value name="Eyelids"     increment="0.1" baseoffset="0"/>
+    <Value name="Smile"       increment="0.1" baseoffset="0"/>
+    <Value name="Mouth"       increment="0.1" baseoffset="0"/>
+    <Value name="Neck Yaw"    increment="0.1" baseoffset="0"/>
+    <Value name="Neck Pitch"  increment="0.1" baseoffset="0"/>
+    <Value name="Left Elbow"  increment="0.1" baseoffset="0"/>
+    <Value name="Left Wrist"  increment="0.1" baseoffset="0"/>
+    <Value name="Left Grasp"  increment="0.1" baseoffset="0"/>
+    <Value name="Right Elbow" increment="0.1" baseoffset="0"/>
+    <Value name="Right Wrist" increment="0.1" baseoffset="0"/>
+    <Value name="Right Grasp" increment="0.1" baseoffset="0"/>
+    <Value name="Waist"       increment="0.1" baseoffset="0"/>
+    <Value name="Left Upper"  increment="0.1" baseoffset="0"/>
+    <Value name="Left Lower"  increment="0.1" baseoffset="0"/>
+    <Value name="Left Foot"   increment="0.1" baseoffset="0"/>
+    <Value name="Right Upper" increment="0.1" baseoffset="0"/>
+    <Value name="Right Lower" increment="0.1" baseoffset="0"/>
+    <Value name="Right Foot"  increment="0.1" baseoffset="0"/>
+    <Value name="Walk Cam"    increment="0.1" baseoffset="0"/>
+</Pose>

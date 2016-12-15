@@ -1,0 +1,21 @@
+<bml id="$id$" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine" composition="REPLACE">
+    <speech id="instruction2" start="1">
+        <text>
+            Please wait there.
+            I will assist you in a moment.
+            <sync id="look_back"/>
+        </text>
+
+        <!-- only for Mary voices. -->
+        <description priority="10" type="maryxml">
+            <maryxml xmlns="http://mary.dfki.de/2002/MaryXML">
+                Please wait there.
+                I will assist you in a moment.
+                <mark name="look_back"/>
+            </maryxml>
+        </description>
+    </speech>
+
+    <!-- Gaze at the other interlocutor. -->
+    <sze:lookAt id="lookAtOtherInterlocutor" x="$interactionContext.otherInterlocutor.x$" y="$interactionContext.otherInterlocutor.y$" start="0" end="0.2"/>
+</bml>

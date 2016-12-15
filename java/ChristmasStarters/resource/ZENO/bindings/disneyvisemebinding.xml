@@ -1,0 +1,24 @@
+<VisemeToMorphMapping>
+  <Mapping viseme="0" pose="viseme_openmouth"/>
+  <Mapping viseme="1" pose="viseme_openmouth"/>
+  <Mapping viseme="2" pose="viseme_openmouth"/>
+  <Mapping viseme="3" pose="viseme_openmouth"/>
+  <Mapping viseme="4" pose="viseme_openmouth"/>
+  <Mapping viseme="5" pose="viseme_openmouth"/>
+  <Mapping viseme="6" pose="viseme_openmouth"/>
+  <Mapping viseme="7" pose="viseme_openmouth"/>
+  <Mapping viseme="8" pose="viseme_openmouth"/>
+  <Mapping viseme="9" pose="viseme_openmouth"/>
+  <Mapping viseme="10" pose="viseme_openmouth"/>
+  <Mapping viseme="11" pose="viseme_openmouth"/>
+  <Mapping viseme="12" pose="viseme_closedmouth"/>
+  <Mapping viseme="13" pose="viseme_closedmouth"/>
+  <Mapping viseme="14" pose="viseme_closedmouth"/>
+  <Mapping viseme="15" pose="viseme_closedmouth"/>
+  <Mapping viseme="16" pose="viseme_closedmouth"/>
+  <Mapping viseme="17" pose="viseme_closedmouth"/>
+  <Mapping viseme="18" pose="viseme_closedmouth"/>
+  <Mapping viseme="19" pose="viseme_closedmouth"/>
+  <Mapping viseme="20" pose="viseme_closedmouth"/>
+  <Mapping viseme="21" pose="viseme_closedmouth"/>
+</VisemeToMorphMapping>

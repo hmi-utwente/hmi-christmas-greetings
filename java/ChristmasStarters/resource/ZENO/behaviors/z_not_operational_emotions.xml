@@ -1,0 +1,8 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+
+<sze:expression id="expression1" expression="angry" intensity="0.75" start="0"/>
+<sze:expression id="expression2" expression="amazed" intensity="0.75" start="expression1:end"/>
+<sze:expression id="expression3" expression="sad" intensity="0.75" start="expression2:end"/>
+<sze:expression id="expression4" expression="happy" intensity="0.75" start="expression3:end"/>
+<sze:expression id="expression5" expression="confused" intensity="0.75" start="expression4:end"/>
+</bml> 

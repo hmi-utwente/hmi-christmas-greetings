@@ -1,0 +1,7 @@
+<bml id="$id$" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+<!-- for zeno internal speech: -->
+<!-- sze:speak id="speak1" text="$text1$$text2$$text3$" start="0"/> -->
+
+<!-- for ASAP speechengine (usually maryttts): -->
+<speech id="speech1" start="0"><text>$text1$$text2$$text3$</text></speech>  
+</bml> 

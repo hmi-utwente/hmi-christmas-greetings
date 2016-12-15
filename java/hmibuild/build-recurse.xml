@@ -1,0 +1,86 @@
+<project>
+  <!-- ant include to work on all build.xml in subdirectories -->
+  <property name="build.dir"             value="build"    />
+  <property name="lib.dir"               value="lib"  />
+  <property name="deps.dir"              value="deps"  />
+  <property name="dist.dir"              value="dist"  />
+  <property name="dist.dir.absolute"     value="dist"  />
+  
+  <property name="test.build.dir"             value="test/build"    />
+  
+  <target name="resolve">
+    <subant target="resolve" genericantfile="build.xml">
+       <sort><fileset dir="." includes="*/build.xml"/></sort>
+    </subant>
+  </target>
+
+  <target name="build" depends="-pre-compilation">
+    <subant target="build" genericantfile="build.xml">
+      <sort><fileset dir="." includes="*/build.xml"/></sort>
+    </subant>
+  </target>
+
+   <target name="-clean-toplevel" description="Removes the top-level build directories">
+      <echo message="Cleaning top-level build directories" />
+      <delete dir="${build.dir}" failonerror="false"/>
+      <delete dir="${lib.dir}" failonerror="false"/>
+      <delete dir="${dist.dir}" failonerror="false"/>
+      <delete dir="${deps.dir}" failonerror="false"/>
+      <delete dir="${test.build.dir}" failonerror="false"/>
+      <delete dir="${test.report.dir}" failonerror="false"/>
+   </target>
+  <target name="clean" depends="-clean-toplevel">
+    <subant target="clean" genericantfile="build.xml">
+      <sort><fileset dir="." includes="*/build.xml"/></sort>
+    </subant>
+  </target>
+
+  <target name="-pre-compilation">
+    <subant target="-pre-compilation"   genericantfile="build.xml">
+      <sort><fileset dir="." includes="*/build.xml"/></sort>
+    </subant>
+  </target>
+
+  <target name="compile" depends="-pre-compilation">
+    <subant target="compile" genericantfile="build.xml">
+      <sort><fileset dir="." includes="*/build.xml"/></sort>
+    </subant>
+  </target>
+
+  <target name="dist"  >
+    <subant target="dist" genericantfile="build.xml">
+      <sort><fileset dir="." includes="*/build.xml"/></sort>
+    </subant>
+  </target>
+
+  <target name="jar"  >
+    <subant target="jar" genericantfile="build.xml">
+      <sort><fileset dir="." includes="*/build.xml"/></sort>
+    </subant>
+  </target>
+
+  <target name="test"  >
+    <subant target="test" genericantfile="build.xml">
+      <sort><fileset dir="." includes="*/build.xml"/></sort>
+    </subant>
+  </target>
+
+  <target name="eclipsesourceproject"  >
+    <subant target="eclipsesourceproject" genericantfile="build.xml">
+      <sort><fileset dir="." includes="*/build.xml"/></sort>
+    </subant>
+  </target>
+
+  
+  <target name="eclipseproject"  >
+    <subant target="eclipseproject" genericantfile="build.xml">
+      <sort><fileset dir="." includes="*/build.xml"/></sort>
+    </subant>
+  </target>
+
+  <target name="-findmain">
+    <echo message="findmain not relevant for build-recurse" />
+  </target>
+ 
+
+</project>

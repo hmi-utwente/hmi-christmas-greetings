@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Main-Class: main
+       
+Name: ChristmasStarters
+Specification-Title:    ChristmasStarters
+Specification-Version:  0.1
+Specification-Vendor:   ChristmasStarters
+Implementation-Title:   ChristmasStarters
+Implementation-Version: July 20 2016  01:41 PM
+Implementation-Vendor:  ChristmasStarters

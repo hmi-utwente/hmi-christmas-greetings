@@ -1,0 +1,79 @@
+<project xmlns:au="antlib:org.apache.ant.antunit" xmlns:ac="antlib:net.sf.antcontrib">
+  <import file="../../build.xml" />
+  
+  <!-- is called prior to the test -->
+  <target name="setUp">
+  </target>
+
+  <!-- is called after the test, even if that caused an error -->
+  <target name="tearDown">  
+	  <!--delete failonerror="false" dir="build"/-->  
+	  <delete failonerror="false" dir="privateprops"/>  
+	  <delete failonerror="false" dir="lib"/>      
+	  <delete failonerror="false" dir="dist"/>      
+	  <delete failonerror="false" file="manifest.mf"/>	
+	  <delete failonerror="false" dir="test/lib"/>	  
+	  <delete failonerror="false" dir="test/report"/>	  	  	  
+  </target>
+
+  <target name="antunittestCompileJava">
+    <antcall target="compile"/>
+    <au:assertFileExists file="build/classes/Test.class"/>    
+    <au:plainlistener/>
+  </target>
+  
+  <target name="antunittestDist">
+    <antcall target="dist"/>
+    <au:assertFileExists file="dist/testjava-0.1.jar"/> 
+    <au:assertFileExists file="manifest.mf"/> 
+  </target>
+
+  <target name="antunittestClean">
+    <antcall target="clean"/>    
+  </target>
+  
+  <target name="antunittestCleanAfterDist">
+    <antcall target="dist"/>
+    <touch file="dist/noremove"/>
+    <antcall target="clean"/>
+    <au:assertFileDoesntExist file="dist/testjava-0.1.jar"/>
+    <au:assertFileExists file="dist/noremove"/>
+  </target>
+  
+  <target name="antunittestResolve">
+    <antcall target="Ivy.resolve"/>
+    <au:assertFileExists file="lib/HmiUtil-1.25.jar"/>    
+	<au:assertFileExists file="test/lib/junit-dep-4.11.jar"/>    
+    <au:plainlistener/>
+  </target>
+  
+  <target name="antunittestJunitFailingTest">
+    <antcall target="Ivy.resolve"/>
+	<au:expectfailure>
+		<antcall target="junit"/>
+	</au:expectfailure>
+  </target>  
+  
+  <target name="antunittestJunitReportFailingTest">
+	<antcall target="Ivy.resolve"/>
+    <antcall target="junitreport"/>
+	<au:assertFileExists file="test/report/index.html"/>
+  </target> 
+  
+  <target name="antunittestJunitNofailFailingTest">
+	<antcall target="Ivy.resolve"/>
+    <antcall target="junitnofail"/>
+	<au:assertFileExists file="build/test/results/TEST-UnitTest.xml"/>
+  </target> 
+  
+  <!-- doesn't work, removes this file...
+  <target name="antunittestFreeze">
+    <antcall target="freeze"/>
+    <au:assertFileExists file="build.alternate"/>
+    <au:assertFileExists file="build-Util.xml"/>
+    <au:assertFileExists file="build-java.xml"/> 
+    <antcall target="compile"/>
+    <move file="build.alternate" tofile="build.xml"/>
+  </target>
+  -->
+</project>

@@ -1,0 +1,4 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+
+<faceLexeme lexeme="BLINK" id="blink1" start="0"/>
+</bml> 

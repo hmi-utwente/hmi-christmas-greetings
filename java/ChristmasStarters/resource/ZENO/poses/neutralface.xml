@@ -1,0 +1,6 @@
+<Pose>
+    <Value name="Smile"   increment="0" baseoffset="0"/>
+    <Value name="Brows"   increment="0" baseoffset="0"/>
+    <Value name="Eyelids" increment="0" baseoffset="0.5"/>
+    <Value name="Mouth" increment="0" baseoffset="-0.5"/>
+</Pose>

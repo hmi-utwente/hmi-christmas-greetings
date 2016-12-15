@@ -1,0 +1,3 @@
+<bml id="$id$" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+    <sze:lookAt id="lookAtOtherInterlocutor" x="$interactionContext.otherInterlocutor.x$" y="$interactionContext.otherInterlocutor.y$" start="0" end="0.2"/>
+</bml>

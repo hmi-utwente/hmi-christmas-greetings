@@ -1,0 +1,7 @@
+<bml id="bml" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+
+<sze:speak id="welcome" text="Hello, my name is Zeno." start="0"/>
+<sze:expression id="happy" expression="happy" intensity="0.75" start="welcome:start"/>
+<sze:animation id="wave" expression="wave" start="welcome:end"/>
+
+</bml>

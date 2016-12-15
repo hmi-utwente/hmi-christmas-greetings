@@ -1,0 +1,18 @@
+<VisemeToZenoPoseMapping>
+  <Mapping viseme="0" pose="viseme_closedmouth"/> <!-- Viseme for silence. -->
+  <Mapping viseme="1" pose="viseme_closedmouth"/> <!--  p, b-->
+  <Mapping viseme="2" pose="viseme_halfopenmouth"/> <!-- t, d, k, g-->
+  <Mapping viseme="3" pose="viseme_halfopenmouth"/> <!-- n, @n, l, @l-->
+  <Mapping viseme="4" pose="viseme_closedmouth"/> <!-- m-->
+  <Mapping viseme="5" pose="viseme_halfopenmouthpurse"/> <!--f, v -->
+  <Mapping viseme="6" pose="viseme_halfopenmouth"/> <!-- s, z-->
+  <Mapping viseme="7" pose="viseme_halfopenmouth"/> <!-- S, Z, tS, dZ-->
+  <Mapping viseme="8" pose="viseme_halfopenmouth"/> <!-- h, r, x, N-->
+  <Mapping viseme="9" pose="viseme_halfopenmouth"/> <!-- j, C-->
+  <Mapping viseme="10" pose="viseme_openmouthsmile"/> <!-- i:, I, e:, E:, E-->
+  <Mapping viseme="11" pose="viseme_openmouth"/> <!-- a:, a-->
+  <Mapping viseme="12" pose="viseme_openmouthpurse"/> <!-- o:, O-->
+  <Mapping viseme="13" pose="viseme_openmouthpurse"/> <!-- u:, U-->
+  <Mapping viseme="14" pose="viseme_halfopenmouthpurse"/> <!-- @, 6-->
+  <Mapping viseme="15" pose="viseme_openmouth"/> <!-- y:, Y, 2:, 9-->
+</VisemeToZenoPoseMapping>

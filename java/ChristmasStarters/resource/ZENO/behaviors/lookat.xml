@@ -1,0 +1,12 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+
+	<sze:lookAt id="lookat1" x="0.2" y="0.5" start="0"/>
+	<sze:speak id="t1" text="Links" start="lookat1:start"/>
+	
+	<sze:lookAt id="lookat2" x="0.75" y="0.2" start="t1:end+1"/>
+	<sze:speak id="t2" text="Rechts" start="lookat2:start"/>
+	
+	<sze:lookAt id="lookat3" x="0.5" y="1" start="3"/>
+	<sze:speak id="t3" text="Boven" start="lookat3:start"/>
+	
+</bml> 

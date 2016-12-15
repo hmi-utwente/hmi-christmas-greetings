@@ -1,0 +1,23 @@
+<bml id="$id$" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine" composition="REPLACE">
+    <speech id="direct_user_success" start="0">
+        <text>
+            That's the way!
+            <sync id="goodbye"/>
+            Goodbye!
+        </text>
+
+        <!-- only for Mary voices. -->
+        <description priority="10" type="maryxml">
+            <maryxml xmlns="http://mary.dfki.de/2002/MaryXML">
+                That's the way!
+                <mark name="goodbye"/>
+                Goodbye!
+            </maryxml>
+        </description>
+    </speech>
+
+    <sze:animation id="wave" animation="hmmm_wave" start="direct_user_success:goodbye"/>
+
+    <!-- Look happy  -->
+    <faceLexeme lexeme="happy" amount="1" id="fl2" start="0" end="0.1"/>
+</bml>

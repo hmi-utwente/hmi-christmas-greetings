@@ -1,0 +1,54 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+
+<sze:speak id="speak10" text="Hello, my name is Zeno." start="0"/>
+<sze:expression id="happy1" expression="happy" intensity="0.75" start="0"/>
+<sze:expression id="happy2" expression="happy" intensity="1" start="1"/>
+
+<sze:speak id="speak20" text="I am a robot from the planet Mars." start="speak10:end"/>
+<sze:expression id="happy3" expression="happy" intensity="0.5" start="speak20:start"/>
+
+<sze:speak id="speak30" text="I got lost when I was flying through the galaxy." start="speak20:end+1"/>
+<sze:expression id="sad1" expression="sad" intensity="0.5" start="speak30:start"/>
+<sze:expression id="sad2" expression="sad" intensity="1" start="speak30:start+1"/>
+
+<sze:speak id="speak40" text="Now my space ship has broken here on Earth." start="speak30:end"/>
+<sze:expression id="angry1" expression="angry" intensity="0.75" start="speak40:start"/>
+<sze:expression id="angry2" expression="angry" intensity="0.25" start="speak40:end"/>
+
+<sze:speak id="speak50" text="I need your help to fix it because I have to be home before dark." start="speak40:end+1"/>
+<sze:expression id="sad3" expression="sad" intensity="0.75" start="speak50:start"/>
+<sze:expression id="sad4" expression="sad" intensity="0.5" start="speak50:start+1"/>
+
+<sze:speak id="speak60" text="Before I can fly again, I need to find out how the gravity works." start="speak50:end"/>
+<sze:expression id="amazed1" expression="amazed" intensity="0.5" start="speak60:start"/>
+<sze:expression id="amazed2" expression="amazed" intensity="1" start="speak60:start+1"/>
+<sze:expression id="amazed3" expression="amazed" intensity="0.75" start="speak60:start+2"/>
+
+<sze:speak id="speak70" text="I am excited to see how this works here on earth, because where I come from the gravity is very different!" start="speak60:end"/>
+<sze:expression id="happy4" expression="happy" intensity="0.75" start="speak70:start"/>
+<sze:expression id="amazed4" expression="amazed" intensity="0.5" start="speak70:start+2"/>
+<sze:expression id="amazed5" expression="amazed" intensity="1" start="speak70:start+3"/>
+
+<sze:speak id="speak80" text="We can do some small experiments with a balance beam to try out how it works." start="speak70:end"/>
+<sze:expression id="happy5" expression="happy" intensity="0.25" start="speak80:start"/>
+<sze:expression id="happy6" expression="happy" intensity="0.75" start="speak80:start+1"/>
+<sze:expression id="amazed6" expression="amazed" intensity="0.25" start="speak80:end"/>
+
+<sze:speak id="speak90" text="It is no problem if you don't understand everything, we can practice the experiments again if you want." start="speak80:end+1"/>
+<sze:expression id="happy7" expression="happy" intensity="0.5" start="speak90:start"/>
+<sze:expression id="confused1" expression="confused" intensity="0.5" start="speak90:start+2"/>
+<sze:expression id="happy8" expression="happy" intensity="0.75" start="speak90:start+3"/>
+
+<sze:speak id="speak100" text="Sometimes even I might not understand what is happening." start="speak90:end+0.5"/>
+<sze:expression id="confused2" expression="confused" intensity="1.0" start="speak100:start"/>
+<sze:expression id="confused3" expression="confused" intensity="0.5" start="speak100:start+1"/>
+
+<sze:speak id="speak110" text="But then I will ask you to explain it to me." start="speak100:end"/>
+<sze:expression id="amazed7" expression="amazed" intensity="0.75" start="speak110:start"/>
+<sze:expression id="happy9" expression="happy" intensity="0.75" start="speak110:start+1"/>
+
+<sze:speak id="speak120" text="Then we can learn together how it works." start="speak110:end"/>
+<sze:expression id="happy10" expression="happy" intensity="0.75" start="speak120:start"/>
+<sze:expression id="happy11" expression="happy" intensity="1.0" start="speak120:end"/>
+
+</bml> 

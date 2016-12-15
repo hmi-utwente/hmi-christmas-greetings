@@ -1,0 +1,14 @@
+<bml id="test" xmlns="http://www.bml-initiative.org/bml/bml-1.0">
+<posture id="left" start="1" end="left:start+2">
+	<pose part="HEAD" lexeme="turn-left"/>
+</posture>
+
+<posture id="right" start="left:end+1" end="right:start+2">
+	<pose part="HEAD" lexeme="turn-right"/>
+</posture>
+
+<posture id="neutral" start="right:end+2" end="neutral:start+2">
+	<pose part="HEAD" lexeme="neutral"/>
+</posture>
+
+</bml>

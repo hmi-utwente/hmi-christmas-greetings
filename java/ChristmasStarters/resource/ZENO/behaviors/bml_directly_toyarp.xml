@@ -1,0 +1,7 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:mwe="http://hmi.ewi.utwente.nl/middlewareengine">
+
+	<mwe:sendMessage id="behavior1" topic="a" start="0">
+    b
+    </mwe:sendMessage>
+	
+</bml> 

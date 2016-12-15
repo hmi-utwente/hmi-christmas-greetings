@@ -1,0 +1,29 @@
+<bml id="$id$" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine" composition="REPLACE">
+    <speech id="instruction_polite" start="0">
+        <text>
+            My apologies, maybe I was not clear.
+            Please point at the sign with your doctors name on it.
+            <sync id="point_left"/> Either this sign on your left.
+            <sync id="point_right"/> Or this sign on your right.
+        </text>
+
+        <!-- only for Mary voices. -->
+        <description priority="10" type="maryxml">
+            <maryxml xmlns="http://mary.dfki.de/2002/MaryXML">
+                My apologies, maybe I was not clear.
+                <boundary duration="500"/>
+                Please point at the sign with your doctors name on it.
+                <boundary duration="500"/>
+                <mark name="point_left"/> Either this sign on your left.
+                <boundary duration="2000"/>
+                <mark name="point_right"/> Or this sign on your right."
+            </maryxml>
+        </description>
+    </speech>
+
+    <sze:animation id="directArm1" animation="hmmm_direct_left" start="instruction_polite:point_left"/>
+    <sze:animation id="directHead1" animation="hmmm_head_point_left" start="instruction_polite:point_left"/>
+
+    <sze:animation id="directArm2" animation="hmmm_direct_right" start="instruction_polite:point_right"/>
+    <sze:animation id="directHead2" animation="hmmm_head_point_right" start="instruction_polite:point_right"/>
+</bml>

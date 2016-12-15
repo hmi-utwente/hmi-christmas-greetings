@@ -1,0 +1,5 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+<!--sze:expression id="expression2" expression="amazed" intensity="0.75" start="0"/-->
+<sze:speak id="speak1" text="Hello I am Zeno" start="0"/>
+<!--sze:expression id="expression4" expression="happy" intensity="0.75" start="speak1:end"/-->
+</bml> 

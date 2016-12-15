@@ -1,0 +1,28 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+
+<sze:speak id="speak10" text="Hello, my name is Zeno." start="0"/>
+<sze:expression id="happy1" expression="happy" intensity="0.5" start="0"/>
+
+<sze:speak id="speak20" text="I am a robot from the planet Mars." start="speak10:end"/>
+
+<sze:speak id="speak30" text="I got lost when I was flying through the galaxy." start="speak20:end+1"/>
+
+<sze:speak id="speak40" text="Now my space ship has broken here on Earth." start="speak30:end"/>
+
+<sze:speak id="speak50" text="I need your help to fix it because I have to be home before dark." start="speak40:end+1"/>
+
+<sze:speak id="speak60" text="Before I can fly again, I need to find out how the gravity works." start="speak50:end"/>
+
+<sze:speak id="speak70" text="I am excited to see how this works here on earth, because where I come from the gravity is very different!" start="speak60:end"/>
+
+<sze:speak id="speak80" text="We can do some small experiments with a balance beam to try out how it works." start="speak70:end"/>
+
+<sze:speak id="speak90" text="It is no problem if you don't understand everything, we can practice the experiments again if you want." start="speak80:end+1"/>
+
+<sze:speak id="speak100" text="Sometimes even I might not understand what is happening." start="speak90:end+0.5"/>
+
+<sze:speak id="speak110" text="But then I will ask you to explain it to me." start="speak100:end"/>
+
+<sze:speak id="speak120" text="Then we can learn together how it works." start="speak110:end"/>
+
+</bml> 

@@ -1,0 +1,31 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+
+<!--  right left-->
+    <sze:animation id="anim1" animation="Default" start="0"/>
+	<sze:lookAt id="lookat1" x="0.5" y="0.5" start="1"/>
+
+	<sze:lookAt id="lookat2" x="1" y="0.5" start="2"/>
+
+	<sze:lookAt id="lookat3" x="0" y="0.5" start="4"/>
+	
+	<sze:lookAt id="lookat4" x="0.5" y="0.5" start="6"/>
+
+<!-- up-down -->
+
+	<sze:lookAt id="lookat6" x="0.5" y="1" start="11"/>
+
+	<sze:lookAt id="lookat7" x="0.5" y="0" start="13"/>
+	
+	<sze:lookAt id="lookat8" x="0.5" y="0.5" start="15"/>
+
+<!-- box -->	
+	<sze:lookAt id="lookat9" x="0" y="0.5" start="19"/>
+
+   	<sze:lookAt id="lookat10" x="0" y="1" start="21"/>
+	<sze:lookAt id="lookat11" x="1" y="1" start="23"/>
+	<sze:lookAt id="lookat12" x="1" y="0" start="25"/>
+	<sze:lookAt id="lookat13" x="0" y="0" start="27"/>
+	<sze:lookAt id="lookat14" x="0" y="0.5" start="29"/>
+	<sze:lookAt id="lookat15" x="0.5" y="0.5" start="31"/>
+
+</bml> 

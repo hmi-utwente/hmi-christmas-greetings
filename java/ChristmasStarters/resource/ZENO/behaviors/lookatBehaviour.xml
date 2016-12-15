@@ -1,0 +1,3 @@
+<bml id="$id$" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:sze="http://hmi.ewi.utwente.nl/zenoengine">
+<sze:lookAt id="lookat1" x="$x$" y="$y$"start="0"/>
+</bml> 

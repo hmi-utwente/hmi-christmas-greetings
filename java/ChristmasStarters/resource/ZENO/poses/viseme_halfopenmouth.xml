@@ -1,0 +1,7 @@
+<Pose>
+	<!-- pose file format: for each motor, the pose for intensity=0 is 
+		 0.5+baseoffset; for intensity=1 the value is 0.5+baseoffset+increment.
+	-->
+    <Value name="Mouth"       increment="0.4" baseoffset="-0.5"/>
+    <Value name="Smile" increment="0" baseoffset="0"/>
+</Pose>

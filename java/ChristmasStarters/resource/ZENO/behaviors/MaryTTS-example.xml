@@ -1,0 +1,25 @@
+<!--
+Description levels in speech.
+
+- the realizer will try the highest priority descriptions first. If it cannot deal with them, it will revert to lower levels.
+- all synchronisation points must be present in all levels: if a realizer can ONLY realize the core-BML description, it should still have all synchronisation points available
+-->
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml1">
+
+  <speech id="speech1" start="1">
+
+    <text>Hello! This is a basic core <sync id="s1"/>BML test!</text>
+
+    <!-- only for Mary voices. Here you can use complete MaryXML markup. Note that syncpoints here are <mark elements instead of sync elements;  -->
+    <description priority="10" type="maryxml">
+      <maryxml xmlns="http://mary.dfki.de/2002/MaryXML">
+        Hello! <boundary duration="2500"/> This is a basic Mary <mark name="s1"/>BML test. 
+        <prosody contour="(0%,-10%) (50%,-20%) (70%,-10%) (100%,+200%)" volume="loud">
+            Hello there
+        </prosody>
+      </maryxml>    
+    </description>
+  
+  </speech>
+  
+</bml>
