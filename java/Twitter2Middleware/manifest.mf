@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Main-Class: main
+       
+Name: Twitter2Middleware
+Specification-Title:    Twitter2Middleware
+Specification-Version:  0.1
+Specification-Vendor:   HMI
+Implementation-Title:   Twitter2Middleware
+Implementation-Version: December 15 2016  10:09 PM
+Implementation-Vendor:  HMI
