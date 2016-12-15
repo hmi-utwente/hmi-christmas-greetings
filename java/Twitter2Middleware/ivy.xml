@@ -1,0 +1,9 @@
+<ivy-module version="2.0">
+   <info organisation="HMI" module="Twitter2Middleware"/>
+   <configurations>
+      <include file="${ivy.settings.dir}/configurations.xml"/>
+   </configurations>
+   <dependencies>
+     <dependency org="HMI"   name="HmiMiddlewareAbstractionLayer"     rev="latest.${resolve.status}"   />    
+   </dependencies>
+</ivy-module>
