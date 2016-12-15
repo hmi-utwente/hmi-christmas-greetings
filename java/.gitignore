@@ -1,8 +1,5 @@
 
 # Created by https://www.gitignore.io/api/java,osx,windows,eclipse
-dist/
-lib/
-build/
 
 ### OSX ###
 *.DS_Store
