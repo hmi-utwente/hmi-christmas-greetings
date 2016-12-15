@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Main-Class: main
+       
+Name: KerstDM
+Specification-Title:    KerstDM
+Specification-Version:  0.1
+Specification-Vendor:   KerstDM
+Implementation-Title:   KerstDM
+Implementation-Version: July 20 2016  01:41 PM
+Implementation-Vendor:  KerstDM

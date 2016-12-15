@@ -10,8 +10,8 @@
     <PipeLoader id="visualizerpipe" loader="asap.bmlflowvisualizer.loader.AsapBMLFlowVisualizerPortLoader"/>
 	  <PipeLoader id="pipe" loader="asap.middlewareadapters.loader.MiddlewareToBMLRealizerAdapterLoader">
 		  <MiddlewareOptions loaderclass="nl.utwente.hmi.middleware.stomp.STOMPMiddlewareLoader">
-	           <MiddlewareProperty name="iTopic" value="/topic/ASAPZenoBmlRequest"/>
-	           <MiddlewareProperty name="oTopic" value="/topic/ASAPZenoBmlFeedback"/>
+	           <MiddlewareProperty name="iTopic" value="/topic/ASAPArmandiaBmlRequest"/>
+	           <MiddlewareProperty name="oTopic" value="/topic/ASAPArmandiaBmlFeedback"/>
 	         </MiddlewareOptions>
 	  </PipeLoader>
   </Loader>
