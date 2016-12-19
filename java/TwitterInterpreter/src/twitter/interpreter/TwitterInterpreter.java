@@ -50,6 +50,7 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 		agents = new HashMap<String,Agent>();
 		agents.put("armandia", new Armandia("/topic/ASAPArmandiaBmlRequest", "/topic/ASAPArmandiaBmlFeedback"));
 		agents.put("zeno", new Zeno("/topic/ASAPZenoBmlRequest", "/topic/ASAPZenoBmlFeedback"));
+		agents.put("UMA", new UMA("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback"));
 		
 		Properties ps = new Properties();
 		ps.put("iTopic", INPUT_TOPIC);
@@ -80,7 +81,7 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 	@Override
 	public void processData(JsonNode jn) {
 		logger.debug("incoming data{}", jn.toString());
-		
+		System.out.println("got tweet: "+jn.toString());
 		if(!jn.path("time").isMissingNode() && !jn.path("user").isMissingNode() && !jn.path("content").isMissingNode()){
 			Tweet t = new Tweet(Long.parseLong(jn.path("time").asText()), jn.path("user").asText(), jn.path("content").asText());
 			interpretTweet(t);
@@ -96,6 +97,7 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 		//TODO: choose an agent at random, or based on a hashtag #zeno or #armandia or something
 		Agent a = agents.get("armandia");
 		Agent z = agents.get("zeno");
+		Agent u = agents.get("UMA");
 		
 		ArrayNode requests = om.createArrayNode();
 		requests.add(a.buildRequest(t.getContent()));

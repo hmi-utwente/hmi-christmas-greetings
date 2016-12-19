@@ -115,21 +115,21 @@ public class KerstDM implements ErrorHandler {
     	
     	gsonParser = new Gson ();
     	
-		inTopicToneelStuk = "/topic/KerstDM";//binnenkomende toneelstukjes
+		inTopicToneelStuk = "/topic/BehaviourRequests";//binnenkomende toneelstukjes
 		inTopicASAP1Feedback = "/topic/bmlFeedback1";
 		inTopicASAP2Feedback = "/topic/bmlFeedback2";
 		
 		outTopicASAP1 = "/topic/bmlRequests1";
 		outTopicASAP2 = "/topic/bmlRequests2";
 
-		qpt = new QueueProcessingThreat(con);
+		//qpt = new QueueProcessingThreat(con);
         try {
             con = new Connection(apolloIP, apolloPort, "admin", "password");
             con.setErrorHandler(this);
 			con.connect();
 			System.out.println("Connection initialised.");
 			
-			qpt = new QueueProcessingThreat(con);
+			//qpt = new QueueProcessingThreat(con);
 			qpt.run();			
 			
 		} catch (StompJException e) {
@@ -150,7 +150,7 @@ public class KerstDM implements ErrorHandler {
 				public void onMessage(Message msg) {
 										
 			    	Requests requests = gsonParser.fromJson(msg.getContentAsString(), Requests.class);
-			    	
+			    	System.out.println("Got message: ...");
 			    	if (qpt!= null) {
 			    			qpt.addCommands(requests.getRequests());			    						    			
 			    		}

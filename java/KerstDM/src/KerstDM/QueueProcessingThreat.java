@@ -1,20 +1,30 @@
 package KerstDM;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.AbstractQueue;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import com.fasterxml.jackson.databind.JsonNode;
 
-public class QueueProcessingThreat extends Thread {
+import nl.utwente.hmi.middleware.stomp.StompHandler;
+import pk.aamir.stompj.Message;
+import pk.aamir.stompj.MessageHandler;
+
+import static nl.utwente.hmi.middleware.helpers.JsonNodeBuilders.array;
+import static nl.utwente.hmi.middleware.helpers.JsonNodeBuilders.object;
+
+public class QueueProcessingThreat extends Thread implements MessageHandler {
 	
 	Queue<Command> q;
-	pk.aamir.stompj.Connection connection;
+	StompHandler connection;
 	
 	private boolean canProcess;
 	
 	
-	public QueueProcessingThreat (pk.aamir.stompj.Connection connection) {
+	public QueueProcessingThreat (StompHandler connection) {
 		q = new LinkedBlockingQueue<>();
 		this.connection = connection;
 		canProcess = false;
@@ -34,11 +44,17 @@ public class QueueProcessingThreat extends Thread {
 		if (c != null) {
 			// process
 			String outTopic = c.getAgent();
-			String feedBackTopic = c.getAgentFeedback();
 			String bml = c.getBml();
 			
-			connection.send(bml, outTopic);
-			canProcess = false;
+			try {
+				JsonNode value = object("bml", object("content", URLEncoder.encode(bml, "UTF-8"))).end();
+				connection.sendMessage(value.toString(), outTopic);
+				canProcess = false;
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 	}
 	
@@ -46,16 +62,18 @@ public class QueueProcessingThreat extends Thread {
 	
 	@Override
 	public void run() {		
-		
+
 		while (true) {
+			
+			try {
+				Thread.sleep(millis);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			if (canProcess) {
-				process();				
-				try {
-					currentThread().sleep(millis);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				process();	
 			}
 		}
 		
@@ -65,6 +83,30 @@ public class QueueProcessingThreat extends Thread {
 	public void setCanProcess(boolean canProcess) {
 		this.canProcess = canProcess;
 	}
+
+	@Override
+	public void onMessage(Message msg) {
+		boolean isPresent = isBMLSpeechEndIs(msg.getContentAsString());
+		
+		if (isPresent){
+			setCanProcess(true);
+		}
+	}
 	
+	private boolean isBMLSpeechEndIs (String str ){		
+		boolean found = false;
+		String prefix = "id=\"bml";
+		String suffix= ":end\"";
+		
+		String [] tokens = str.split(" ");
+		
+		for (int i = 0; i < tokens.length && !found; i++) {
+			String t = tokens[i];
+			if (t.startsWith(prefix) && t.endsWith(suffix))
+				found = true;
+		}		
+		
+		return found;
+	}
 
 }

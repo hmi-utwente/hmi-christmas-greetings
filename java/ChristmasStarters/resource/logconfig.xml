@@ -14,6 +14,8 @@
   
   <logger name="nl.utwente" level="INFO"/>
   <logger name="nl.utwente.hmi.middleware.loader" level="DEBUG"/>
+  <logger name="nl.utwente.hmi.middleware.stomp" level="DEBUG"/>
+  <logger name="KerstDM" level="DEBUG"/>
   <logger name="hmi.flipper" level="INFO"/>
   <logger name="nl.utwente.hmi.mwdialogue" level="INFO"/>
   

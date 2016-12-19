@@ -5,6 +5,13 @@ public class Command {
 	private String agent;
 	private String agentFeedback;
 	private String bml;
+	
+	public Command(String agent, String agentFeedback, String bml) {
+		this.agent = agent;
+		this.agentFeedback = agentFeedback;
+		this.bml = bml;
+	}
+	
 	public String getAgent() {
 		return agent;
 	}

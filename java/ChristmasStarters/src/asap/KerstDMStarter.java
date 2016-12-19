@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import KerstDM.KerstDM;
+import KerstDM.KerstScheduler;
 import nl.utwente.hmi.middleware.loader.GenericMiddlewareLoader;
 import twitter.interpreter.TwitterInterpreter;
 
@@ -30,13 +31,8 @@ public class KerstDMStarter {
         }
     	
 		GenericMiddlewareLoader.setGlobalPropertiesFile(mwPropFile);
-
-		//TODO: get these from mwpropfile
-	    String apolloIP = "127.0.0.1";
-		int apolloPort = 61613;
-		
-		KerstDM kdm = new KerstDM(apolloIP, apolloPort);
-		
+		KerstScheduler ks = new KerstScheduler();
+		ks.init();
 	}
 	
 }
