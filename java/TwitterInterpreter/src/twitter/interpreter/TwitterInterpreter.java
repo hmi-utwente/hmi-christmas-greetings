@@ -95,9 +95,13 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 	private void interpretTweet(Tweet t){
 		//TODO: choose an agent at random, or based on a hashtag #zeno or #armandia or something
 		Agent a = agents.get("armandia");
+		Agent z = agents.get("zeno");
 		
 		ArrayNode requests = om.createArrayNode();
 		requests.add(a.buildRequest(t.getContent()));
+		
+		//make the snarky response
+		requests.add(z.buildRequest(t.getContent()));
 		
 		middleware.sendData(requests);
 	}

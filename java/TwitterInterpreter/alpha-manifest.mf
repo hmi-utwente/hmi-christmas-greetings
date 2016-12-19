@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Main-Class: main
+       
+Name: TwitterInterpreter
+Specification-Title:    TwitterInterpreter
+Specification-Version:  0.1.1-alpha
+Specification-Vendor:   TwitterInterpreter
+Implementation-Title:   TwitterInterpreter
+Implementation-Version: July 20 2016  01:41 PM
+Implementation-Vendor:  TwitterInterpreter

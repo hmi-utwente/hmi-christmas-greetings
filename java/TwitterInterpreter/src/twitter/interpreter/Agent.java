@@ -1,14 +1,18 @@
 package twitter.interpreter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public abstract class Agent {
+	  private static Logger logger = LoggerFactory.getLogger(Agent.class.getName());
 
 	private String requestTopic;
 	private String feedbackTopic;
-	private ObjectMapper om;
+	protected ObjectMapper om;
 
 	protected static final String BML_STRING = "<bml id=\"bml1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\" xmlns:sze=\"http://hmi.ewi.utwente.nl/zenoengine\">$bmlcontent$</bml>"; 
 	protected static final String SPEECH_STRING = "<speech id=\"speech1\" start=\"0\"><text>$speechtext$</text></speech>"; 
@@ -44,6 +48,8 @@ public abstract class Agent {
 	 * @return a JSON node that contains the STOMP input/output topics and the BML for this agent
 	 */
 	public JsonNode buildRequest(String s){
+		logger.debug("Generating BML request for speech string {}", s);
+		
 		String speech = SPEECH_STRING.replace("$speechtext$", s);
 		String bml = BML_STRING.replace("$bmlcontent$", speech);
 		
@@ -52,6 +58,8 @@ public abstract class Agent {
 		request.put("agentFeedback", getFeedbackTopic());
 		//TODO: add merijn's extra BML stuff
 		request.put("bml", bml);
+		
+		logger.debug("BML Request: {}", request.toString());
 		
 		return request;
 	}
