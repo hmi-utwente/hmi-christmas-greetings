@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Main-Class: main
+       
+Name: UmaAgent
+Specification-Title:    UmaAgent
+Specification-Version:  0.1
+Specification-Vendor:   HMI
+Implementation-Title:   UmaAgent
+Implementation-Version: December 15 2016  10:09 PM
+Implementation-Vendor:  HMI

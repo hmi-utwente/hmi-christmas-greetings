@@ -1,0 +1,4 @@
+resource/config.properties
+lib/
+dist/
+build/
