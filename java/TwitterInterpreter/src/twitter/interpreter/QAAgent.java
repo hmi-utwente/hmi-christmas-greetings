@@ -9,30 +9,29 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import qamatcher.DialogStore;
 import qamatcher.DomDialogsParser;
 
-public class SnarkyAgent extends Agent {
-	  private static Logger logger = LoggerFactory.getLogger(SnarkyAgent.class.getName());
+public class QAAgent extends Agent {
+	private static Logger logger = LoggerFactory.getLogger(QAAgent.class.getName());
 
-	private static final String QA_FILE = "snarky_responses.xml";
 	private DialogStore store;
 	private DomDialogsParser dds;
 
-	public SnarkyAgent(String requestTopic, String feedbackTopic) {
+	public QAAgent(String requestTopic, String feedbackTopic, String qaFile) {
 		super(requestTopic, feedbackTopic);
-		this.dds = new DomDialogsParser(QA_FILE);
+		this.dds = new DomDialogsParser(qaFile);
 		this.store = dds.getDialogStore();
 	}
 	
 
 	@Override
 	public JsonNode buildRequest(String s){
-		logger.debug("Generating snarky response for text: {}", s);
+		logger.debug("Generating QA response for text: {}", s);
 		
 		String attName = "type";
 		String attValue = "certain";
 		store.setAttribute(attName,attValue);
 		String answer = store.bestMatch(s);		
 		
-		logger.debug("Got snarky response: {}", answer);
+		logger.debug("Got QA response: {}", answer);
 		
 		return super.buildRequest(answer);
 	}

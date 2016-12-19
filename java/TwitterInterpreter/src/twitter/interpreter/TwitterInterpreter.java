@@ -31,6 +31,8 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 	private static final String INPUT_TOPIC = "/topic/Tweets";
 	private static final String OUTPUT_TOPIC = "/topic/BehaviourRequests";
 	
+	private static final String SNARKY_RESPONSES = "snarky_responses.xml";
+	
 	private Map<String,Agent> agents;
 	
 	private Middleware middleware;
@@ -48,9 +50,9 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 		om = new ObjectMapper();
 
 		agents = new HashMap<String,Agent>();
-		agents.put("armandia", new Armandia("/topic/ASAPArmandiaBmlRequest", "/topic/ASAPArmandiaBmlFeedback"));
-		agents.put("zeno", new Zeno("/topic/ASAPZenoBmlRequest", "/topic/ASAPZenoBmlFeedback"));
-		agents.put("UMA", new UMA("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback"));
+		agents.put("armandia", new ReciteAgent("/topic/ASAPArmandiaBmlRequest", "/topic/ASAPArmandiaBmlFeedback"));
+		agents.put("zeno", new QAAgent("/topic/ASAPZenoBmlRequest", "/topic/ASAPZenoBmlFeedback", SNARKY_RESPONSES));
+		agents.put("UMA", new TWSSAgent("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback"));
 		
 		Properties ps = new Properties();
 		ps.put("iTopic", INPUT_TOPIC);
@@ -71,11 +73,6 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 	public void receiveData(JsonNode jn)
     {
 		addDataToQueue(jn);
-	}
-	
-	@Override
-	public void addDataToQueue(JsonNode jn) {
-		queue.add(jn);
 	}
 
 	@Override
@@ -102,8 +99,12 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 		ArrayNode requests = om.createArrayNode();
 		requests.add(a.buildRequest(t.getContent()));
 		
+		//potential TWSS?
+		requests.add(u.buildRequest(t.getContent()));
+		
 		//make the snarky response
 		requests.add(z.buildRequest(t.getContent()));
+		
 		
 		middleware.sendData(requests);
 	}
