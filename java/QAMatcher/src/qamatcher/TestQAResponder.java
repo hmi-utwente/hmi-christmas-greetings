@@ -9,8 +9,6 @@ import java.util.Random;
 import java.util.regex.Pattern;
 
 
-import com.sun.xml.internal.ws.util.StringUtils;
-
 import pk.aamir.stompj.Connection;
 import pk.aamir.stompj.ErrorHandler;
 import pk.aamir.stompj.ErrorMessage;
