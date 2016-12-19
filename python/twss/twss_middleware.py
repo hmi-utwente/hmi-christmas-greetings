@@ -32,7 +32,7 @@ class SpeechListener(stomp.ConnectionListener):
 	    p_label, p_acc, p_val = svm_predict([1], [x], model, '-b 1 -q')
 	    prob = p_val[0][0]
 	    print(prob)
-            conn.send({'destination': '/topic/twssOutput', 'body': '{ "score": '+str(prob)+' }'})
+            conn.send('/topic/twssOutput', '{ "score": '+str(prob)+' }')
 
 def main(argv=None):
     global conn, vocabList, model
@@ -40,7 +40,7 @@ def main(argv=None):
     vocabList = pickle.load(input)
     input.close()
     model = svm_load_model("data/svm_model.pk")
-    conn = stomp.Connection()
+    conn = stomp.Connection([('192.168.1.149', 61613)])
     conn.set_listener('', SpeechListener())
     conn.start()
     conn.connect('admin', 'password', wait=True)
