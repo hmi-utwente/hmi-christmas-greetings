@@ -22,7 +22,7 @@ class SpeechListener(stomp.ConnectionListener):
     def on_message(self, headers, message):
 	global conn, vocabList, model
         print('received a message "%s"' % message)
-	raw = json.loads(message)['string']['input']
+	raw = json.loads(message)['sentence']
         trans = urllib.unquote_plus(raw.encode('utf-8')).decode('utf-8')
 	words = trans.split(' ')
 	if len(words) > 4:
