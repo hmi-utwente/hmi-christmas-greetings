@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Main-Class: main
+       
+Name: QAMatcher
+Specification-Title:    QAMatcher
+Specification-Version:  0.1
+Specification-Vendor:   HMI
+Implementation-Title:   QAMatcher
+Implementation-Version: July 20 2016  01:41 PM
+Implementation-Vendor:  HMI
