@@ -1,11 +1,14 @@
 package KerstDM;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.AbstractQueue;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -86,18 +89,30 @@ public class QueueProcessingThreat extends Thread implements MessageHandler {
 
 	@Override
 	public void onMessage(Message msg) {
-		boolean isPresent = isBMLSpeechEndIs(msg.getContentAsString());
+		boolean isPresent = false;
+		try {
+			isPresent = isBMLSpeechEndIs(URLDecoder.decode(msg.getContentAsString(), "UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		if (isPresent){
 			setCanProcess(true);
 		}
 	}
 	
-	private boolean isBMLSpeechEndIs (String str ){		
+	private boolean isBMLSpeechEndIs (String str ){
+		System.out.println("BML??? "+str);
 		boolean found = false;
 		String prefix = "id=\"bml";
 		String suffix= ":end\"";
+		String pattern = "id=\"bml(\\d+):end";
+		Pattern r = Pattern.compile(pattern);
+		Matcher m = r.matcher(str);
 		
+		found = m.find();
+		/*
 		String [] tokens = str.split(" ");
 		
 		for (int i = 0; i < tokens.length && !found; i++) {
@@ -105,7 +120,8 @@ public class QueueProcessingThreat extends Thread implements MessageHandler {
 			if (t.startsWith(prefix) && t.endsWith(suffix))
 				found = true;
 		}		
-		
+*/
+		System.out.println("res??? "+found);
 		return found;
 	}
 
