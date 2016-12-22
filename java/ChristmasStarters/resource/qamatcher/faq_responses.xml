@@ -1,0 +1,20 @@
+﻿<qa_root>
+<dialog id="0001">
+<answerlist>
+<answer type="certain">
+The answer is always 42!
+</answer>
+<answer type="certain">
+Forty two, of course!
+</answer>
+</answerlist>
+<questionlist>
+<question>
+meaning of life
+</question>
+<question>
+answer life universe everything
+</question>
+</questionlist>
+</dialog>
+</qa_root>
