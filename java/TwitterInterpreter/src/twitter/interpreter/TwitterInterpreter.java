@@ -4,10 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -31,7 +34,11 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 	private static final String INPUT_TOPIC = "/topic/Tweets";
 	private static final String OUTPUT_TOPIC = "/topic/BehaviourRequests";
 	
+	private static final String[] QUESTION_PHRASES = new String[] {"what","why","who","when","where","how"};
+	private static final String QUESTION_MARK = "?";
+	
 	private Middleware middleware;
+	
 
 	private ObjectMapper om;
 	
@@ -88,11 +95,23 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 
 		//TODO: make FAQ: listen for some keywords that indicate a question (who, what, why, where, when, etc) combined with a question mark, and use a different QA module that responds to FAQ
 		//TODO: make actions: listen some keywords about actions (do, make, say, dance, shake, etc)
-		if(content.contains("what")){
-			
+		
+		//try to figure out if there are any indicators that this is a question
+		Set<String> wordSet = new HashSet<String>(Arrays.asList(content.split(" ")));
+		Set<String> phrasesSet = new HashSet<String>(Arrays.asList(QUESTION_PHRASES));
+		phrasesSet.retainAll(wordSet);
+		
+		Performance p = null;
+		
+		//Which type of performance should we do?
+		if(phrasesSet.size() > 0 && content.contains(QUESTION_MARK)){
+			//the user is asking a question
+			p = new FAQPerformance();
+		} else {
+			p = new RecitePerformance();
 		}
 		
-		Performance p = new RecitePerformance();
+		//do the magic :)
 		ArrayNode script = p.generateScript(t.getContent());
 		
 		middleware.sendData(script);

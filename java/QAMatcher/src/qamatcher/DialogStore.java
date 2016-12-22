@@ -21,12 +21,14 @@ public class DialogStore{
 String attname="";
 String attvalue="";
 
+private Random random;
 
 List<Dialog> dialogs;
-private static final String DEFAULT_ANSWER = "I do not understand what you mean.";
+private static final String DEFAULT_ANSWER = "But I'm not going to tell you!";
 
 public DialogStore(){
 	dialogs = new ArrayList<Dialog>();
+	random = new Random();
 }
 
 public void add(Dialog d){ dialogs.add(d);
@@ -59,13 +61,20 @@ public void setAttribute(String attName,String attValue){
  * @return DEFAULT_ANSWER if no answer is found
  */ 
 public String answerString(Dialog d, String attName, String attValue){
+	List<String> answers = new ArrayList<String>();
+	
 	for(int j=0;j<d.answerSize();j++){
 		AnswerType at = d.getAnswer(j);
 		String value = at.valueOfAttribute(attName);
 		if ((value!=null) && (value.equals(attValue)))
-			return at.answer;
+			answers.add(at.answer);
 	}
-	return DEFAULT_ANSWER;
+	
+	if(answers.size() > 0){
+		return answers.get(random.nextInt(answers.size()));
+	} else {
+		return DEFAULT_ANSWER;
+	}
 }
 
 /**

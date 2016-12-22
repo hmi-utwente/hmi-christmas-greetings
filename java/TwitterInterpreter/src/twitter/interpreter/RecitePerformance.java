@@ -8,6 +8,11 @@ import java.util.Map.Entry;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
+/**
+ * This is a basic recital, with some responses from other agents
+ * @author davisond
+ *
+ */
 public class RecitePerformance implements Performance {
 
 	
