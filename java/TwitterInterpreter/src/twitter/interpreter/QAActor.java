@@ -31,11 +31,11 @@ public class QAActor extends Actor {
 		String attName = "type";
 		String attValue = "certain";
 		store.setAttribute(attName,attValue);
-		answer = store.bestMatch(input);	
+		answer = store.bestMatch(input);
 		
 		logger.debug("Got QA response: {}", answer);
 		
-		wantToAct = true;
+		wantToAct = !answer.equals("");
 	}
 	
 	@Override

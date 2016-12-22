@@ -12,11 +12,11 @@
      <dependency org="HMI"   name="HmiMiddlewareAbstractionLayer"     rev="latest.${resolve.status}"   />    
      <dependency org="Asap"   name="AsapMiddlewareEngine"     rev="latest.${resolve.status}"   />     <dependency org="Asap"   name="AsapMiddlewareRealizerAdapters"     rev="latest.${resolve.status}"   />    
      
-             <dependency org="HMI"   name="HmiJComponentEnvironment"     rev="latest.${resolve.status}"   />    
+      <dependency org="HMI"   name="HmiJComponentEnvironment"     rev="latest.${resolve.status}"   />    
 
       <dependency org="HMI"      name="HmiTTS"         rev="latest.${resolve.status}"  />
       <dependency org="HMI"      name="HmiTTSMary5"         rev="latest.${resolve.status}"  />
-<dependency org="Asap"   name="AsapSapi5TTSBinding" rev="latest.${resolve.status}"   />
+	<dependency org="Asap"   name="AsapSapi5TTSBinding" rev="latest.${resolve.status}"   />
       <dependency org="HMI"      name="HmiTTSSapi5"         rev="latest.${resolve.status}"  />
       <dependency org="HMI"     name="HmiTTSnative" rev="latest.release"  />   			    
       

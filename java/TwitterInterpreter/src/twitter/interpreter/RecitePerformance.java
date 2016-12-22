@@ -31,6 +31,7 @@ public class RecitePerformance implements Performance {
 		actors.put("UMAREC", new RecitingActor("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback"));
 		actors.put("UMAQA", new QAActor("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback", SNARKY_RESPONSES));
 		actors.put("UMATWSS", new TWSSActor("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback"));
+		actors.put("eyePi", new EmotionalActor("/topic/ASAPEyePiBmlRequest", "/topic/ASAPEyePiBmlFeedback"));
 	}
 
 	@Override

@@ -24,11 +24,15 @@ String attvalue="";
 private Random random;
 
 List<Dialog> dialogs;
-private static final String DEFAULT_ANSWER = "But I'm not going to tell you!";
+private String defaultAnswer = "";
 
 public DialogStore(){
 	dialogs = new ArrayList<Dialog>();
 	random = new Random();
+}
+
+public void setDefaultAnswer(String da){
+	this.defaultAnswer = da;
 }
 
 public void add(Dialog d){ dialogs.add(d);
@@ -73,7 +77,7 @@ public String answerString(Dialog d, String attName, String attValue){
 	if(answers.size() > 0){
 		return answers.get(random.nextInt(answers.size()));
 	} else {
-		return DEFAULT_ANSWER;
+		return defaultAnswer;
 	}
 }
 
@@ -98,7 +102,7 @@ public String bestMatch(String question, String attName, String attValue){
 	        // Here we look at the attribute value !
 		answer = answerString(d, attName , attValue );
 	}else{
-		answer = DEFAULT_ANSWER;
+		answer = defaultAnswer;
 	}
 	return answer;
 }

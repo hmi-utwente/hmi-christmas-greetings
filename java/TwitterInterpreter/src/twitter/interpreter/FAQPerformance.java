@@ -56,8 +56,14 @@ public class FAQPerformance implements Performance {
 		zRec.provideContext("Well.. That's easy!");
 		requests.add(zRec.generateAction());
 		
+		//do we have an answer..?
 		zQA.provideContext(input);
-		requests.add(zQA.generateAction());
+		if(zQA.wantToAct()){
+			requests.add(zQA.generateAction());
+		} else {
+			zRec.provideContext("The answer is always forty two!");
+			requests.add(zRec.generateAction());
+		}
 		
 		return requests;
 	}

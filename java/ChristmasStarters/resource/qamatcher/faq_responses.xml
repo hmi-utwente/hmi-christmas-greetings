@@ -17,4 +17,79 @@ answer life universe everything
 </question>
 </questionlist>
 </dialog>
+<dialog id="0002">
+<answerlist>
+<answer type="certain">
+It's cold and raining as always!
+</answer>
+<answer type="certain">
+It's horribly cold!
+</answer>
+<answer type="certain">
+Winter is coming!
+</answer>
+</answerlist>
+<questionlist>
+<question>
+weather
+</question>
+<question>
+winter
+</question>
+<question>
+temperature
+</question>
+<question>
+cold
+</question>
+<question>
+warm
+</question>
+<question>
+hot
+</question>
+<question>
+rain
+</question>
+<question>
+snow
+</question>
+</questionlist>
+</dialog>
+<dialog id="0003">
+<answerlist>
+<answer type="certain">
+Maybe if you wank it hard enough!
+</answer>
+</answerlist>
+<questionlist>
+<question>
+Will we get a white christmas this year?
+</question>
+</questionlist>
+</dialog>
+<dialog id="0004">
+<answerlist>
+<answer type="certain">
+I see you have been very very naughty!
+</answer>
+<answer type="certain">
+You will only get coal!
+</answer>
+<answer type="certain">
+You are very naughty. No presents for you!
+</answer>
+</answerlist>
+<questionlist>
+<question>
+What will I get for christmas?
+</question>
+<question>
+Will I get any presents for christmas?
+</question>
+<question>
+What is santa getting me for christmas?
+</question>
+</questionlist>
+</dialog>
 </qa_root>
