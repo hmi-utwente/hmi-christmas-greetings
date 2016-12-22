@@ -43,6 +43,28 @@ public class Middleware2Hue extends AbstractWorker implements MiddlewareListener
         middleware = gml.load();
 
         middleware.addListener(this);
+
+		try {
+			sendLights("{ \"on\":true, \"sat\":254, \"bri\":254,\"hue\":10000} ", 1);
+			sendLights("{ \"on\":true, \"sat\":254, \"bri\":254,\"hue\":10000} ", 2);
+			sendLights("{ \"on\":true, \"sat\":254, \"bri\":254,\"hue\":10000} ", 3);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+		    public void run() {
+				try {
+					sendLights("{ \"on\":false }", 1);
+					sendLights("{ \"on\":false }", 2);
+					sendLights("{ \"on\":false }", 3);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    }
+		}));
 	}
 
 	@Override
@@ -59,15 +81,36 @@ public class Middleware2Hue extends AbstractWorker implements MiddlewareListener
 	@Override
 	public void processData(JsonNode jn) {
 		logger.debug("/topic/Hue:{}", jn.toString());
-		try {
-			sendLights(jn.toString(), 1);
-			sendLights(jn.toString(), 2);
-			sendLights(jn.toString(), 3);
-		} catch (Exception e) {
-			e.printStackTrace();
+
+		if (jn.has("polarity") && jn.has("subjectivity")) {
+			float pol = Float.parseFloat(jn.get("polarity").asText());
+			float sub = Float.parseFloat(jn.get("subjectivity").asText());
+			sendSentiment(pol, sub);
+		} else {
+			try {
+				sendLights(jn.toString(), 1);
+				sendLights(jn.toString(), 2);
+				sendLights(jn.toString(), 3);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
+	public void sendSentiment(float polarity, float subjectivity) {
+		int hue1 = (int) (((polarity+1)/2) * 65535);
+		int hue2 = (int) (((subjectivity+1)/2) * 65535);
+		int hue3 = (int) (hue1+hue2)/2;
+		try {
+			sendLights("{ \"on\": true, \"hue\":"+hue1+" }", 1);
+			sendLights("{ \"on\": true, \"hue\":"+hue2+" }", 2);
+			sendLights("{ \"on\": true, \"hue\":"+hue3+" }", 3);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	public void sendLights(String state, int lamp) throws Exception {
 			String numLamp = Integer.toString(lamp);
