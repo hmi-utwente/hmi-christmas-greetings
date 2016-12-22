@@ -74,8 +74,8 @@ public class MechioZenoRobotControllerStarter {
 		GenericMiddlewareLoader.setGlobalPropertiesFile(mwPropFile);
         
 		Properties ps = new Properties();
-		ps.put("iTopic", "/topic/robotAction");
-		ps.put("oTopic", "/topic/robotFeedback");
+		ps.put("iTopic", "/topic/ASAPZenoEngineAction");
+		ps.put("oTopic", "/topic/ASAPZenoEngineFeedback");
 		
         GenericMiddlewareLoader gml = new GenericMiddlewareLoader("nl.utwente.hmi.middleware.stomp.STOMPMiddlewareLoader", ps);
         Middleware m = gml.load();
