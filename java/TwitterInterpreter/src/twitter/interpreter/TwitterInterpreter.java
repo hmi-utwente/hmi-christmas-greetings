@@ -97,7 +97,7 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 		//TODO: make actions: listen some keywords about actions (do, make, say, dance, shake, etc)
 		
 		//try to figure out if there are any indicators that this is a question
-		Set<String> wordSet = new HashSet<String>(Arrays.asList(content.split(" ")));
+		Set<String> wordSet = new HashSet<String>(Arrays.asList(content.toLowerCase().split(" ")));
 		Set<String> phrasesSet = new HashSet<String>(Arrays.asList(QUESTION_PHRASES));
 		phrasesSet.retainAll(wordSet);
 		
@@ -105,9 +105,11 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 		
 		//Which type of performance should we do?
 		if(phrasesSet.size() > 0 && content.contains(QUESTION_MARK)){
+			logger.info("Doing a FAQ script");
 			//the user is asking a question
 			p = new FAQPerformance();
 		} else {
+			logger.info("Doing a recital script");
 			p = new RecitePerformance();
 		}
 		
