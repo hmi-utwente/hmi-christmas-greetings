@@ -1,0 +1,5 @@
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:mwe="http://hmi.ewi.utwente.nl/middlewareengine" id="bml1">
+<mwe:sendJsonMessage id="example" start="0">
+{ "example" : { "command":"do_something" , "param1" : "first_parameter", "param2":"second_parameter"}}
+</mwe:sendJsonMessage>
+</bml>

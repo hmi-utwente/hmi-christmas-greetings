@@ -105,7 +105,7 @@ public class Hue2MiddlewareRealizerStarter
     {
     	String help = "Expecting commandline arguments in the form of \"-<argname> <arg>\".\nAccepting the following argnames: agentspec, middlewareprops";
     	
-        String spec = "ZENO/loaders/agentspec.xml";
+        String spec = "MIDDLEWARE/loaders/agentspec.xml";
     	String propFile = "defaultmiddleware.properties";
     	
         if(args.length % 2 != 0){

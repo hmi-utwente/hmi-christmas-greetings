@@ -1,0 +1,14 @@
+<middlewarebinding>
+   
+    <MiddlewareUnitSpec type="sendJsonMessage" namespace="http://hmi.ewi.utwente.nl/middlewareengine">
+        <constraints>
+        </constraints>
+        <parametermap>
+            <parameter src="content" dst="content"/>
+        </parametermap>
+        <parameterdefaults>
+        </parameterdefaults>
+        <MiddlewareUnit type="SendJsonDataMessageMU"/>
+    </MiddlewareUnitSpec>   
+    
+</middlewarebinding>
