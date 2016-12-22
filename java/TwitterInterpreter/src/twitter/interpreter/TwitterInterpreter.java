@@ -31,10 +31,6 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 	private static final String INPUT_TOPIC = "/topic/Tweets";
 	private static final String OUTPUT_TOPIC = "/topic/BehaviourRequests";
 	
-	private static final String SNARKY_RESPONSES = "snarky_responses.xml";
-	
-	private Map<String,Agent> agents;
-	
 	private Middleware middleware;
 
 	private ObjectMapper om;
@@ -49,14 +45,6 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 	public void init() {
 		om = new ObjectMapper();
 
-		//TODO: possibly move this to the PerformanceGenerator
-		agents = new HashMap<String,Agent>();
-		agents.put("armandia", new ReciteAgent("/topic/ASAPArmandiaBmlRequest", "/topic/ASAPArmandiaBmlFeedback"));
-		agents.put("zeno", new QAAgent("/topic/ASAPZenoBmlRequest", "/topic/ASAPZenoBmlFeedback", SNARKY_RESPONSES));
-		agents.put("UMA", new TWSSAgent("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback"));
-		
-		//TODO: add a HUE agent, and an EyePi agent
-		
 		//start listening for input from the twitter module
 		Properties ps = new Properties();
 		ps.put("iTopic", INPUT_TOPIC);
@@ -98,24 +86,11 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 		//TODO: make a "Performance Generator", which chooses actors and their roles, and constructs the dialogue (based on the content of the tweet)
 
 		//TODO: make FAQ: listen for some keywords that indicate a question (who, what, why, where, when, etc) combined with a question mark, and use a different QA module that responds to FAQ
-		//TODO: make actions: listen some keywords about actions (do, make, say, dance, shake, etc) 
+		//TODO: make actions: listen some keywords about actions (do, make, say, dance, shake, etc)
+		Performance p = new RecitePerformance();
+		ArrayNode script = p.generateScript(t.getContent());
 		
-		//TODO: base this on the Performance Generator
-		Agent a = agents.get("armandia");
-		Agent z = agents.get("zeno");
-		Agent u = agents.get("UMA");
-		
-		//this is just one form of a theatre piece
-		ArrayNode requests = om.createArrayNode();
-		requests.add(a.buildRequest(t.getContent()));
-		
-		//potential TWSS?
-		requests.add(u.buildRequest(t.getContent()));
-		
-		//make the snarky response
-		requests.add(z.buildRequest(t.getContent()));
-		
-		middleware.sendData(requests);
+		middleware.sendData(script);
 	}
 	
 	

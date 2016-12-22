@@ -20,8 +20,8 @@ import nl.utwente.hmi.middleware.worker.AbstractWorker;
  * @author davisond
  *
  */
-public class TWSSAgent extends Agent {
-	  private static Logger logger = LoggerFactory.getLogger(TwitterInterpreter.class.getName());
+public class TWSSActor extends Actor {
+	  private static Logger logger = LoggerFactory.getLogger(TWSSActor.class.getName());
 
 	  private static final long TIMEOUT = 2000;
 	  private static final double TWSS_THRESHOLD = 0.5;
@@ -41,7 +41,7 @@ public class TWSSAgent extends Agent {
 	 */
 	public boolean waitingForResponse = false;
 	
-	public TWSSAgent(String requestTopic, String feedbackTopic) {
+	public TWSSActor(String requestTopic, String feedbackTopic) {
 		super(requestTopic, feedbackTopic);
 		
         init();
@@ -67,13 +67,13 @@ public class TWSSAgent extends Agent {
 	}
 	
 	@Override
-	public JsonNode buildRequest(String s){
-		logger.debug("Requesting TWSS for sentence: {}", s);
+	public void provideContext(String input){
+		logger.debug("Requesting TWSS for sentence: {}", input);
 		//request a response from external module
 		twssResponse = null;
 		waitingForResponse = true;
 		ObjectNode twssReq = om.createObjectNode();
-		twssReq.put("sentence", s);
+		twssReq.put("sentence", input);
 		middleware.sendData(twssReq);
 		
 		//now we should wait a bit for response from the TWSS module
@@ -97,12 +97,8 @@ public class TWSSAgent extends Agent {
 		//TODO: potential threading issues, should synchronise..?
 		waitingForResponse = false;
 		
-		//at this point, if we have a response we can do some awesome shizzle
-		if(twssResponse != null && twssResponse.path("score").asDouble(0.0) >= TWSS_THRESHOLD){
-			return super.buildRequest("That's what she said!");
-		} else {
-			return super.buildRequest("Nothing to add");
-		}
+		//Should we make the TWSS response..?
+		wantToAct = twssResponse != null && twssResponse.path("score").asDouble(0.0) >= TWSS_THRESHOLD;
 	}
 
 	/**

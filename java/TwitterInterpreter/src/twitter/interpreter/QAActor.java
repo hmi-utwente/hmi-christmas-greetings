@@ -9,31 +9,40 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import qamatcher.DialogStore;
 import qamatcher.DomDialogsParser;
 
-public class QAAgent extends Agent {
-	private static Logger logger = LoggerFactory.getLogger(QAAgent.class.getName());
+public class QAActor extends Actor {
+	private static Logger logger = LoggerFactory.getLogger(QAActor.class.getName());
 
 	private DialogStore store;
 	private DomDialogsParser dds;
 
-	public QAAgent(String requestTopic, String feedbackTopic, String qaFile) {
+	private String answer;
+
+	public QAActor(String requestTopic, String feedbackTopic, String qaFile) {
 		super(requestTopic, feedbackTopic);
 		this.dds = new DomDialogsParser(qaFile);
 		this.store = dds.getDialogStore();
 	}
 	
-
 	@Override
-	public JsonNode buildRequest(String s){
-		logger.debug("Generating QA response for text: {}", s);
+	public void provideContext(String input){
+		logger.debug("Generating QA response for text: {}", input);
 		
 		String attName = "type";
 		String attValue = "certain";
 		store.setAttribute(attName,attValue);
-		String answer = store.bestMatch(s);		
+		answer = store.bestMatch(input);	
 		
 		logger.debug("Got QA response: {}", answer);
 		
-		return super.buildRequest(answer);
+		wantToAct = true;
+	}
+	
+	@Override
+	public JsonNode generateAction(){
+
+		logger.debug("Generating BML request for given input {}", input);
+		
+		return buildJSONRequest(buildBML(buildSpeech(input)));
 	}
 	
 
