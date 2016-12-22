@@ -1,8 +1,8 @@
 package twitter.interpreter;
 
-public class ReciteAgent extends Agent {
+public class RecitingActor extends Actor {
 
-	public ReciteAgent(String requestTopic, String feedbackTopic) {
+	public RecitingActor(String requestTopic, String feedbackTopic) {
 		super(requestTopic, feedbackTopic);
 		// TODO Auto-generated constructor stub
 	}
