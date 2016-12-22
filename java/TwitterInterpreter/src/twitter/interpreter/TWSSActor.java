@@ -40,6 +40,8 @@ public class TWSSActor extends Actor {
 	 * Tells our middleware worker if we are waiting for a response, or if the response should be discarded
 	 */
 	public boolean waitingForResponse = false;
+
+	private String twssSpeech = "That's what she said!";
 	
 	public TWSSActor(String requestTopic, String feedbackTopic) {
 		super(requestTopic, feedbackTopic);
@@ -101,6 +103,13 @@ public class TWSSActor extends Actor {
 		wantToAct = twssResponse != null && twssResponse.path("score").asDouble(0.0) >= TWSS_THRESHOLD;
 	}
 
+	@Override
+	public JsonNode generateAction(){
+		logger.info("Speaking: {}", twssSpeech);
+		
+		return buildJSONRequest(buildBML(buildSpeech(twssSpeech)));
+	}
+	
 	/**
 	 * Very simple worker that just listens for a response from our TWSS module. If a response is given, the main procesing thread should pick it up
 	 * @author davisond

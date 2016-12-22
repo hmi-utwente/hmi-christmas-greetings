@@ -83,10 +83,15 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 	 * @param t the tweet to interpret
 	 */
 	private void interpretTweet(Tweet t){
+		String content = t.getContent();
 		//TODO: make a "Performance Generator", which chooses actors and their roles, and constructs the dialogue (based on the content of the tweet)
 
 		//TODO: make FAQ: listen for some keywords that indicate a question (who, what, why, where, when, etc) combined with a question mark, and use a different QA module that responds to FAQ
 		//TODO: make actions: listen some keywords about actions (do, make, say, dance, shake, etc)
+		if(content.contains("what")){
+			
+		}
+		
 		Performance p = new RecitePerformance();
 		ArrayNode script = p.generateScript(t.getContent());
 		

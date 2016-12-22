@@ -25,6 +25,7 @@ public class QAActor extends Actor {
 	
 	@Override
 	public void provideContext(String input){
+		this.input = input;
 		logger.debug("Generating QA response for text: {}", input);
 		
 		String attName = "type";
@@ -40,9 +41,10 @@ public class QAActor extends Actor {
 	@Override
 	public JsonNode generateAction(){
 
-		logger.debug("Generating BML request for given input {}", input);
+		logger.debug("Generating BML request for given input: {}", answer);
+		logger.info("Speaking: {}", answer);
 		
-		return buildJSONRequest(buildBML(buildSpeech(input)));
+		return buildJSONRequest(buildBML(buildSpeech(answer)));
 	}
 	
 

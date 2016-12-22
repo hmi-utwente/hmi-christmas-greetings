@@ -19,9 +19,13 @@ public class RecitePerformance implements Performance {
 		om = new ObjectMapper();
 		
 		actors = new HashMap<String,Actor>();
-		actors.put("armandia", new RecitingActor("/topic/ASAPArmandiaBmlRequest", "/topic/ASAPArmandiaBmlFeedback"));
-		actors.put("zeno", new QAActor("/topic/ASAPZenoBmlRequest", "/topic/ASAPZenoBmlFeedback", SNARKY_RESPONSES));
-		actors.put("UMA", new TWSSActor("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback"));
+		actors.put("armandiaREC", new RecitingActor("/topic/ASAPArmandiaBmlRequest", "/topic/ASAPArmandiaBmlFeedback"));
+		actors.put("armandiaQA", new QAActor("/topic/ASAPArmandiaBmlRequest", "/topic/ASAPArmandiaBmlFeedback", SNARKY_RESPONSES));
+		actors.put("zenoREC", new RecitingActor("/topic/ASAPZenoBmlRequest", "/topic/ASAPZenoBmlFeedback"));
+		actors.put("zenoQA", new QAActor("/topic/ASAPZenoBmlRequest", "/topic/ASAPZenoBmlFeedback", SNARKY_RESPONSES));
+		actors.put("UMAREC", new RecitingActor("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback"));
+		actors.put("UMAQA", new QAActor("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback", SNARKY_RESPONSES));
+		actors.put("UMATWSS", new TWSSActor("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback"));
 	}
 
 	@Override
@@ -29,16 +33,17 @@ public class RecitePerformance implements Performance {
 		ArrayNode requests = om.createArrayNode();
 		
 		//the actors that play in this script
-		Actor a = actors.get("armandia");
-		Actor z = actors.get("zeno");
-		Actor u = actors.get("UMA");
+		Actor aRec = actors.get("armandiaREC");
+		Actor zRec = actors.get("zenoREC");
+		Actor zQA = actors.get("zenoQA");
+		Actor uTWSS = actors.get("UMATWSS");
 		
 		//Start the dialogue when a new tweet enters
-		a.provideContext("Hey, we got a new tweet!");
-		requests.add(a.generateAction());
+		aRec.provideContext("Hey, we got a new tweet!");
+		requests.add(aRec.generateAction());
 		
-		z.provideContext("Well read it then!");
-		requests.add(z.generateAction());
+		zRec.provideContext("Well read it then!");
+		requests.add(zRec.generateAction());
 		
 		//TODO: have eyepi look at a
 		//TODO: do something with the lights aswell
@@ -49,15 +54,15 @@ public class RecitePerformance implements Performance {
 		}
 		
 		//this is just one form of a theatre piece
-		if(a.wantToAct()){
-			requests.add(a.generateAction());
+		if(aRec.wantToAct()){
+			requests.add(aRec.generateAction());
 			
 			//potential TWSS?
-			if(u.wantToAct()){
-				requests.add(u.generateAction());
-			} else if(z.wantToAct()) {
+			if(uTWSS.wantToAct()){
+				requests.add(uTWSS.generateAction());
+			} else if(zQA.wantToAct()) {
 				//make the snarky response
-				requests.add(z.generateAction());
+				requests.add(zQA.generateAction());
 			}
 		}
 		

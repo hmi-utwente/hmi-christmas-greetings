@@ -67,7 +67,8 @@ public abstract class Actor {
 	 * @return a JSON node that contains the STOMP input/output topics and the generated BML for this actor
 	 */
 	public JsonNode generateAction(){
-		logger.debug("Generating BML request for given input {}", input);
+		logger.debug("Generating BML request for given input: {}", input);
+		logger.info("Speaking: {} (Actor: {})", input, this.getClass());
 		
 		return buildJSONRequest(buildBML(buildSpeech(input)));
 	}
@@ -78,7 +79,7 @@ public abstract class Actor {
 	 * @return a JSON node that contains the STOMP input/output topics and the BML for this agent
 	 */
 	public JsonNode buildJSONRequest(String bml){
-		logger.debug("Generating request for BML {}", bml);
+		logger.debug("Generating request for BML: {}", bml);
 		
 		ObjectNode request = om.createObjectNode();
 		request.put("agent", getRequestTopic());
@@ -98,7 +99,7 @@ public abstract class Actor {
 	 */
 	public String buildSpeech(String speech){
 		//TODO: add merijn's extra BML stuff
-		return SPEECH_STRING.replace("$speechtext$", input);
+		return SPEECH_STRING.replace("$speechtext$", speech);
 	}
 	
 	/**
