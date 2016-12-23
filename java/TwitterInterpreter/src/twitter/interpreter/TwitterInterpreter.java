@@ -116,6 +116,8 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 		//do the magic :)
 		ArrayNode script = p.generateScript(t.getContent());
 		
+		logger.info("Sending performance script: {}", script.toString());
+		
 		middleware.sendData(script);
 	}
 	
