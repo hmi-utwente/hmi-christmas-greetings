@@ -45,7 +45,7 @@ public class FAQPerformance implements Performance {
 		Actor hue = actors.get("hue");
 		
 		//Start the dialogue when a new tweet enters
-		aRec.provideContext("Hmm, this is an interesting question!");
+		aRec.provideContext("Hey, this is an interesting question!");
 		requests.add(aRec.generateAction());
 		
 		zRec.provideContext("Really? You think so?");
