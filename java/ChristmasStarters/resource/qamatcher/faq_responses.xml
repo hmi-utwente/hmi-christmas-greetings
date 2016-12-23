@@ -28,6 +28,11 @@ It's horribly cold!
 <answer type="certain">
 Winter is coming!
 </answer>
+
+<answer type="certain">
+    Baby it's cold oudsite!
+</answer>
+
 </answerlist>
 <questionlist>
 <question>
@@ -56,6 +61,7 @@ snow
 </question>
 </questionlist>
 </dialog>
+
 <dialog id="0003">
 <answerlist>
 <answer type="certain">
@@ -96,7 +102,7 @@ What is santa getting me for christmas?
 <dialog id="0005">
     <answerlist>
         <answer type="certain">
-            Our creators are Merijn Daniel Randy Jeroen Christian Jan Alejandro Jered
+            Our creators are Merijn Daniel Randy Jeroen Christian Jan Alejandro Jered from the HMI group
         </answer>
     </answerlist>
     <questionlist>
@@ -111,22 +117,107 @@ What is santa getting me for christmas?
         </question>
     </questionlist>
 </dialog>
+
 <dialog id="0006">
     <answerlist>
         <answer type="certain">
-            Our creators are Merijn Daniel Randy Jeroen Christian Jan Alejandro Jered
+            It is a tradition within the HMI group to build an interactive Christmas card
         </answer>
     </answerlist>
     <questionlist>
         <question>
-            Who created you?
+            Why?
         </question>
         <question>
-            Who made you?
-        </question>
-        <question>
-            Who are your creators?
+            Why you made this?
         </question>
     </questionlist>
-</dialog>
+    
+    <dialog id="0007">
+        <answerlist>
+            <answer type="certain">
+                Jingle bells, jingle bells, jingle all the way, oh, what fun it is to ride, in a one horse open sleigh
+            </answer>
+            <answer type="certain">
+                Stille Nacht! Heilge Nacht! Alles schläft, einsam wacht, Nur das traute hoch heilige Paar. Holder Knab im lockigen Haar, Schlafe in himmlischer Ruh!
+            </answer>
+            
+            <answer type="certain">
+                I'm dreaming of a white Christmas. Just like the ones I used to know. Where the treetops glisten and children listen. To hear sleigh bells in the snow.
+            </answer>
+            
+            <answer type="certain">
+                Last Christmas, I gave you my heart. But the very next day, you gave it away. This year, to save me from tears. I'll give it to someone special
+            </answer>
+            
+            <answer type="certain">
+            I don't want a lot for Christmas. There is just one thing I need. I don't care about the presents underneath the Christmas tree. I just want you for my own. More than you could ever know. Make my wish come true. All I want for Christmas is you!
+            </answer>
+            
+            <answer type="certain">
+                It's Christmastime; there's no need to be afraid. At Christmastime, we let in light and we banish shade. And in our world of plenty we can spread a smile of joy. Throw your arms around the world at Christmastime
+            </answer>
+            
+            <answer type="certain">
+            I'm driving home for Christmas. Oh, I can't wait to see those faces. I'm driving home for Christmas, yea. Well I'm moving down that line. And it's been so long. But I will be there. I sing this song. To pass the time away. Driving in my car. Driving home for Christmas
+            </answer>
+            
+        </answerlist>
+        <questionlist>
+            <question>
+                christmas song?
+            </question>
+            <question>
+                what is your favorite Christmas song?
+            </question>
+            <question>
+                can you sing a Christmas song?
+            </question>
+            <question>
+                song
+            </question>
+        </questionlist>
+        
+        <dialog id="0008">
+            <answerlist>
+                <answer type="certain">
+                    We virtual creatures normally do not eat. But during Christmas we love to eat these virtual turkeys!
+                </answer>
+                <answer type="certain">
+                    This cake is a rich, dark, moist fruit cake, very flavorful at Christmas. Try icing with almond paste for a more festive touch.
+                </answer>
+            </answerlist>
+            <questionlist>
+                <question>
+                    what to eat?
+                </question>
+                <question>
+                    food
+                </question>
+                <question>
+                    dinner
+                </question>
+                <question>
+                    eat
+                </question>
+                <question>
+                    recipe
+                </question>
+            </questionlist>
+        </dialog>
+        
+        <dialog id="0009">
+            <answerlist>
+                <answer type="certain">
+                The Elf-abet!
+                </answer>
+            </answerlist>
+            <questionlist>
+                <question>
+                    What do elves learn in school?
+                </question>
+            </questionlist>
+        </dialog>
+        
+    </dialog>
 </qa_root>
