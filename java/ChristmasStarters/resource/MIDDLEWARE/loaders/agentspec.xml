@@ -1,6 +1,5 @@
 <AsapVirtualHuman>
     <!--  this loader file requires the zenoengine and its resource directory -->
-  
 	<Loader id="realizer" loader="asap.realizerembodiments.AsapRealizerEmbodiment">
 	  <BMLParser>
 	    <BMLAttributeExtension class="asap.bml.ext.bmla.BMLABMLBehaviorAttributes"/>      
@@ -11,8 +10,8 @@
 	  </BMLScheduler>
 	  <PipeLoader id="pipe" loader="asap.middlewareadapters.loader.MiddlewareToBMLRealizerAdapterLoader">
 		  <MiddlewareOptions loaderclass="nl.utwente.hmi.middleware.stomp.STOMPMiddlewareLoader">
-            <MiddlewareProperty name="iTopic" value="/topic/bmlRequests"/>
-            <MiddlewareProperty name="oTopic" value="/topic/bmlFeedback"/>
+	        <MiddlewareProperty name="iTopic" value="/topic/ASAPMiddlewareBmlRequest"/>
+            <MiddlewareProperty name="oTopic" value="/topic/dummyfeedback"/>
           </MiddlewareOptions>
 	  </PipeLoader>
 	</Loader>
@@ -26,7 +25,7 @@
 		  <MiddlewareOptions loaderclass="nl.utwente.hmi.middleware.stomp.STOMPMiddlewareLoader">
             <MiddlewareProperty name="default" value="true"/>
             <MiddlewareProperty name="iTopic" value="/topic/dummy"/>
-            <MiddlewareProperty name="oTopic" value="/topic/philipshue.command"/>
+            <MiddlewareProperty name="oTopic" value="/topic/Hue"/>
           </MiddlewareOptions>
     </Loader>
     
