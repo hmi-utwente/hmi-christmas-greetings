@@ -107,12 +107,22 @@ public class Middleware2Hue extends AbstractWorker implements MiddlewareListener
 			hue2 = (int) ((subjectivity) * 25000 + 40000);
 		}
 		try {
-			sendLights("{ \"on\": true, \"hue\":"+hue1+" }", 1);
-			sendLights("{ \"on\": true, \"hue\":"+hue2+" }", 2);
+			if (polarity > 0) {
+				sendLights("{ \"on\": true, \"hue\":10000 }", 1);
+			} else {
+				sendLights("{ \"on\": true, \"hue\":45000 }", 1);
+			}
+			
+			if (subjectivity > 0) {
+				sendLights("{ \"on\": true, \"hue\":500 }", 1);
+			} else {
+				sendLights("{ \"on\": true, \"hue\":60000 }", 1);
+			}
+			
 			if (Math.random() < 0.5) {
 				sendLights("{ \"on\": true, \"hue\":50000 }", 3);
 			} else {
-				sendLights("{ \"on\": true, \"hue\":0 }", 3);
+				sendLights("{ \"on\": true, \"hue\":2000 }", 3);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
