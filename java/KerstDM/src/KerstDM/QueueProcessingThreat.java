@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.sun.media.jfxmedia.logging.Logger;
 
 import nl.utwente.hmi.middleware.stomp.StompHandler;
 import pk.aamir.stompj.Message;
@@ -23,6 +24,7 @@ public class QueueProcessingThreat extends Thread implements MessageHandler {
 	
 	Queue<Command> q;
 	StompHandler connection;
+	Command c;
 	
 	private boolean canProcess;
 	
@@ -42,17 +44,19 @@ public class QueueProcessingThreat extends Thread implements MessageHandler {
 	}
 	
 	public void process () {
-		Command c = q.poll();
+		c = q.poll();
 		
 		if (c != null) {
 			// process
 			String outTopic = c.getAgent();
 			String bml = c.getBml();
 			
+			System.out.println("Waiting for end on topic: "+c.getAgentFeedback());
 			try {
 				JsonNode value = object("bml", object("content", URLEncoder.encode(bml, "UTF-8"))).end();
 				connection.sendMessage(value.toString(), outTopic);
 				canProcess = false;
+				System.out.println("Waiting for feedback on: "+c.getAgentFeedback());
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -75,7 +79,7 @@ public class QueueProcessingThreat extends Thread implements MessageHandler {
 				e.printStackTrace();
 			}
 			
-			if (canProcess) {
+			if (canProcess || (c!= null && c.getAgentFeedback().equals("/topic/dummyfeedback"))) {
 				process();
 				try {
 					Thread.sleep(1000);
@@ -109,7 +113,7 @@ public class QueueProcessingThreat extends Thread implements MessageHandler {
 	}
 	
 	private boolean isBMLSpeechEndIs (String str ){
-		System.out.println("BML??? "+str);
+		//System.out.println("BML??? "+str);
 		boolean found = false;
 		String prefix = "id=\"bml";
 		String suffix= ":end\"";
@@ -127,7 +131,8 @@ public class QueueProcessingThreat extends Thread implements MessageHandler {
 				found = true;
 		}		
 */
-		System.out.println("res??? "+found);
+		if (found) System.out.println("got end tag match in bml:\n "+str);
+		//System.out.println("res??? "+found);
 		return found;
 	}
 
