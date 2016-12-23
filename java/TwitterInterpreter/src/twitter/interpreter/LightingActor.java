@@ -15,14 +15,14 @@ import nl.utwente.hmi.middleware.worker.AbstractWorker;
 
 
 /**
- * This actor will use emotional expressions and look at a target
+ * This actor will influence the lighting of the scene based on a sentiment analysis
  * This agent will send a blocking request to an external python module. 
  * It waits for a response before continuing, or gives a default response after a timeout
  * @author davisond
  *
  */
-public class EmotionalActor extends Actor {
-	  private static Logger logger = LoggerFactory.getLogger(EmotionalActor.class.getName());
+public class LightingActor extends Actor {
+	  private static Logger logger = LoggerFactory.getLogger(LightingActor.class.getName());
 
 	  private static final long TIMEOUT = 2000;
 	  
@@ -45,7 +45,7 @@ public class EmotionalActor extends Actor {
 
 	private double subjectivity = 0.0;
 	
-	public EmotionalActor(String requestTopic, String feedbackTopic) {
+	public LightingActor(String requestTopic, String feedbackTopic) {
 		super(requestTopic, feedbackTopic);
 		
         init();
@@ -102,29 +102,16 @@ public class EmotionalActor extends Actor {
 		waitingForResponse = false;
 		
 		//Should we make the Sentiment response..?
-		if(sentimentResponse != null){
-			polarity = sentimentResponse.path("polarity").asDouble(0.0);
-			subjectivity = sentimentResponse.path("subjectivity").asDouble(0.0);
-			
-			wantToAct = sentimentResponse != null;
-		}
+		wantToAct = sentimentResponse != null;
 	}
 
 	@Override
 	public JsonNode generateAction(){
-		logger.info("Setting the emotional actor's expression for subjectivity: {} polarity: {}", subjectivity, polarity);
-		if(polarity <= -0.75){
-			return buildJSONRequest(buildBML(buildGestureLexeme("e_angry")));
-		} else if (-0.75 <= polarity && polarity <= -0.25){			
-			return buildJSONRequest(buildBML(buildGestureLexeme("e_sad")));
-		} else if (0.0 <= polarity && polarity <= 0.25){			
-			return buildJSONRequest(buildBML(buildGestureLexeme("e_sleepy")));
-		} else if (0.25 <= polarity && polarity <= 0.5){			
-			return buildJSONRequest(buildBML(buildGestureLexeme("e_amazed")));
-		} else if (0.5 <= polarity){			
-			return buildJSONRequest(buildBML(buildGestureLexeme("e_excited")));
+		logger.info("Setting the mood lights: {}", sentimentResponse.toString());
+		if(sentimentResponse != null){
+			return buildJSONRequest(buildBML(buildMiddlewareData(sentimentResponse.toString())));
 		} else {
-			return buildJSONRequest(buildBML(buildGestureLexeme("e_neutral")));
+			return buildJSONRequest(buildBML(buildMiddlewareData("{\"empty\":\"empty\"}")));
 		}
 	}
 	

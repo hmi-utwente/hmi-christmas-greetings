@@ -32,6 +32,7 @@ public class RecitePerformance implements Performance {
 		actors.put("UMAQA", new QAActor("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback", SNARKY_RESPONSES));
 		actors.put("UMATWSS", new TWSSActor("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback"));
 		actors.put("eyePi", new EmotionalActor("/topic/ASAPEyePiBmlRequest", "/topic/ASAPEyePiBmlFeedback"));
+		actors.put("hue", new LightingActor("/topic/Hue", "/topic/dummyfeedback"));
 	}
 
 	@Override
@@ -43,6 +44,8 @@ public class RecitePerformance implements Performance {
 		Actor zRec = actors.get("zenoREC");
 		Actor zQA = actors.get("zenoQA");
 		Actor uTWSS = actors.get("UMATWSS");
+		Actor eyePi = actors.get("eyePi");
+		Actor hue = actors.get("hue");
 		
 		//Start the dialogue when a new tweet enters
 		aRec.provideContext("Hey, we got a new tweet!");
@@ -59,9 +62,19 @@ public class RecitePerformance implements Performance {
 			actor.getValue().provideContext(input);
 		}
 		
+		//set the mood
+		if(hue.wantToAct()){
+			requests.add(hue.generateAction());
+		}
+		
 		//this is just one form of a theatre piece
 		if(aRec.wantToAct()){
 			requests.add(aRec.generateAction());
+			
+			//have eyePi make facial expression
+			if(eyePi.wantToAct()){				
+				requests.add(eyePi.generateAction());
+			}
 			
 			//potential TWSS?
 			if(uTWSS.wantToAct()){

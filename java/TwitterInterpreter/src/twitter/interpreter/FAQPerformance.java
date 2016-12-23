@@ -29,6 +29,8 @@ public class FAQPerformance implements Performance {
 		actors.put("zenoQA", new QAActor("/topic/ASAPZenoBmlRequest", "/topic/ASAPZenoBmlFeedback", FAQ_responses));
 		actors.put("UMAREC", new RecitingActor("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback"));
 		actors.put("UMAQA", new QAActor("/topic/ASAPUMABmlRequest", "/topic/ASAPUMABmlFeedback", FAQ_responses));
+		actors.put("eyePi", new EmotionalActor("/topic/ASAPEyePiBmlRequest", "/topic/ASAPEyePiBmlFeedback"));
+		actors.put("hue", new LightingActor("/topic/Hue", "/topic/dummyfeedback"));
 	}
 
 	@Override
@@ -39,16 +41,30 @@ public class FAQPerformance implements Performance {
 		Actor aRec = actors.get("armandiaREC");
 		Actor zRec = actors.get("zenoREC");
 		Actor zQA = actors.get("zenoQA");
+		Actor eyePi = actors.get("eyePi");
+		Actor hue = actors.get("hue");
 		
 		//Start the dialogue when a new tweet enters
-		aRec.provideContext("Hmm, this is an interesting question!");
+		aRec.provideContext("Hey, this is an interesting question!");
 		requests.add(aRec.generateAction());
 		
-		zRec.provideContext("Really?? You think so?");
+		zRec.provideContext("Really? You think so?");
 		requests.add(zRec.generateAction());
 
 		aRec.provideContext("Yeah, listen to this.");
 		requests.add(aRec.generateAction());
+
+		//have eyePi make facial expression
+		eyePi.provideContext(input);
+		if(eyePi.wantToAct()){				
+			requests.add(eyePi.generateAction());
+		}
+		
+		//set the mood
+		hue.provideContext(input);
+		if(hue.wantToAct()){
+			requests.add(hue.generateAction());
+		}
 		
 		aRec.provideContext(input);
 		requests.add(aRec.generateAction());

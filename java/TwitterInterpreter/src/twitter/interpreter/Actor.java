@@ -18,9 +18,10 @@ public abstract class Actor {
 
 	protected boolean wantToAct;
 
-	protected static final String BML_STRING = "<bml id=\"bml1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\" xmlns:sze=\"http://hmi.ewi.utwente.nl/zenoengine\">$bmlcontent$</bml>"; 
+	protected static final String BML_STRING = "<bml id=\"bml1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"  xmlns:mwe=\"http://hmi.ewi.utwente.nl/middlewareengine\" xmlns:sze=\"http://hmi.ewi.utwente.nl/zenoengine\">$bmlcontent$</bml>"; 
 	protected static final String SPEECH_STRING = "<speech id=\"speech1\" start=\"0\"><text>$speechtext$</text></speech>"; 
 	protected static final String GESTURE_STRING = "<gesture lexeme=\"$lexeme$\" id=\"e2\" start=\"1\"/>"; 
+	protected static final String MIDDLEWARE_DATA_STRING = "<mwe:sendJsonMessage id=\"example\" start=\"0\">$json$</mwe:sendJsonMessage>";
 	
 	//TODO: create specific implementations for our supported agents
 	public Actor(String requestTopic, String feedbackTopic){
@@ -102,9 +103,13 @@ public abstract class Actor {
 		//TODO: add merijn's extra BML stuff
 		return SPEECH_STRING.replace("$speechtext$", speech);
 	}
-	
+
 	public String buildGestureLexeme(String lexeme){
 		return GESTURE_STRING.replace("$lexeme$", lexeme);
+	}
+
+	public String buildMiddlewareData(String json){
+		return MIDDLEWARE_DATA_STRING.replace("$json$", json);
 	}
 	
 	/**
