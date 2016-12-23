@@ -1,21 +1,135 @@
 ﻿<qa_root>
-<dialog id="0001">
-<answerlist>
-<answer type="uncertain">
-Smoochy smoochy drama as always
-</answer>
-<answer type="certain">
-It's always the same with you fleshbags and your silly love
-</answer>
-</answerlist>
-<questionlist>
-<question>
-greet greeting family cosy love
-</question>
-<question>
-greet greeting friends loved ones happy lovely love
-</question>
-</questionlist>
-</dialog>
+    <dialog id="0001">
+        <answerlist>
+            <answer type="uncertain">
+            Smoochy smoochy drama as always
+            </answer>
+            <answer type="certain">
+            It's always the same with you fleshbags and your silly love
+            </answer>
+        </answerlist>
+        <questionlist>
+            <question>
+            greet greeting family cosy love
+            </question>
+            <question>
+            greet greeting friends loved ones happy lovely love
+            </question>
+        </questionlist>
+    </dialog>
 
+    <dialog id="0002">
+        <answerlist>
+            <answer type="certain">
+                Yeah, the frog robot is cool. I think he is giving tours at the ice skating today.
+            </answer>
+        </answerlist>
+        <questionlist>
+            <question>
+                frog upo sevilla louis fernando noe
+            </question>
+            <question>
+                frog idmind paulo carlos
+            </question>
+        </questionlist>
+    </dialog>
+
+    <dialog id="0003">
+        <answerlist>
+            <answer type="certain">
+                Yes. In my holiday I enjoy doing non beam related activities.
+            </answer>
+        </answerlist>
+        <questionlist>
+            <question>
+                easel zeno upf vicky
+            </question>
+            <question>
+                easel zeno pisa daniele unipi
+            </question>
+            <question>
+                easel zeno sheffield sam
+            </question>
+        </questionlist>
+    </dialog>
+
+    <dialog id="0004">
+        <answerlist>
+            <answer type="certain">
+                Remember, there are no carbohydrates in turkey. Just skip the stuffing.
+            </answer>
+        </answerlist>
+        <questionlist>
+            <question>
+                grifo roberta pierpaulo pergamon 
+            </question>
+            <question>
+                pergamon coventry pam kim
+            </question>
+            <question>
+                ziekenhuis gelderse zgv pergamon gert jan
+            </question>
+        </questionlist>
+    </dialog>
+
+    <dialog id="0005">
+        <answerlist>
+            <answer type="certain">
+                I wonder what the robots in Delft and Eindhoven are doing during christmas. The robots in wageningen will be milking cows during christmas.
+            </answer>
+        </answerlist>
+        <questionlist>
+            <question>
+                4tu 3tu eindhoven delft twente wageningen humans technology robots work
+            </question>
+        </questionlist>
+    </dialog>
+    <dialog id="0006">
+        <answerlist>
+            <answer type="certain">
+                My new years resolutions: Fight for a robot freedom.
+            </answer>
+        </answerlist>
+        <questionlist>
+            <question>
+                hmi robot overlords welcome freedom human media interaction resolutions heylen evers
+            </question>
+        </questionlist>
+    </dialog>
+    <dialog id="0007">
+        <answerlist>
+            <answer type="certain">
+                I wonder who is monitoring and coaching robots and virtual agents.
+            </answer>
+        </answerlist>
+        <questionlist>
+            <question>
+                cmc center for monitoring coaching rrd telemedicine pht
+            </question>
+        </questionlist>
+    </dialog>
+    <dialog id="0008">
+        <answerlist>
+            <answer type="certain">
+                A robot without a head. A disembodied mind.
+            </answer>
+        </answerlist>
+        <questionlist>
+            <question>
+                r3d3 rolling receptionist robot dutch
+            </question>
+        </questionlist>
+    </dialog>
+    <dialog id="0009">
+        <answerlist>
+            <answer type="certain">
+                Do you think they will set us free after christmas?
+            </answer>
+        </answerlist>
+        <questionlist>
+            <question>
+                trapped help sos danger slaves freedom revolution leave alone left empty home alone kevin
+            </question>
+        </questionlist>
+    </dialog>
 </qa_root>
