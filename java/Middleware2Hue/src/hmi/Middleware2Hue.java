@@ -98,13 +98,22 @@ public class Middleware2Hue extends AbstractWorker implements MiddlewareListener
 	}
 	
 	public void sendSentiment(float polarity, float subjectivity) {
-		int hue1 = (int) (((polarity+1)/2) * 65535);
-		int hue2 = (int) (((subjectivity+1)/2) * 65535);
-		int hue3 = (int) (hue1+hue2)/2;
+		int hue1 = (int) (((polarity+1)/4) * 65535);
+		if (polarity>0) {
+			hue1 = (int) ((polarity) * 25000 + 40000);
+		}
+		int hue2 = (int) (((subjectivity+1)/4) * 65535);
+		if (subjectivity>0) {
+			hue2 = (int) ((subjectivity) * 25000 + 40000);
+		}
 		try {
 			sendLights("{ \"on\": true, \"hue\":"+hue1+" }", 1);
 			sendLights("{ \"on\": true, \"hue\":"+hue2+" }", 2);
-			sendLights("{ \"on\": true, \"hue\":"+hue3+" }", 3);
+			if (Math.random() < 0.5) {
+				sendLights("{ \"on\": true, \"hue\":50000 }", 3);
+			} else {
+				sendLights("{ \"on\": true, \"hue\":0 }", 3);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
