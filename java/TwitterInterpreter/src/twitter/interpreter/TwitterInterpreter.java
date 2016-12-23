@@ -34,7 +34,7 @@ public class TwitterInterpreter extends AbstractWorker implements MiddlewareList
 	private static final String INPUT_TOPIC = "/topic/Tweets";
 	private static final String OUTPUT_TOPIC = "/topic/BehaviourRequests";
 	
-	private static final String[] QUESTION_PHRASES = new String[] {"what","why","who","when","where","how", "will"};
+	private static final String[] QUESTION_PHRASES = new String[] {"what's","what","why","who","when","where","how", "will"};
 	private static final String QUESTION_MARK = "?";
 	
 	private Middleware middleware;
