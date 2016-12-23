@@ -144,7 +144,7 @@
   </Loader>
 
  <Loader id="speechengine" loader="asap.speechengine.loader.SpeechEngineLoader" requiredloaders="facelipsync,jawlipsync,ttsbinding,guiembodiment">
-           <Voice factory="WAV_TTS" voicename="dfki-poppy"/>
+           <Voice factory="WAV_TTS" voicename="dfki-poppy-hsmm"/>
    
    <SpeechUI/>
   </Loader>
