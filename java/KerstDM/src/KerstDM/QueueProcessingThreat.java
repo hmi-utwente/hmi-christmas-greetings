@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.AbstractQueue;
+import java.util.Date;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -25,6 +26,7 @@ public class QueueProcessingThreat extends Thread implements MessageHandler {
 	Queue<Command> q;
 	StompHandler connection;
 	Command c;
+	long lastProcess = 0;
 	
 	private boolean canProcess;
 	
@@ -79,8 +81,10 @@ public class QueueProcessingThreat extends Thread implements MessageHandler {
 				e.printStackTrace();
 			}
 			
-			if (canProcess || (c!= null && c.getAgentFeedback().equals("/topic/dummyfeedback"))) {
+			long now = (new Date()).getTime();
+			if (canProcess || (c!= null && c.getAgentFeedback().equals("/topic/dummyfeedback") || now-lastProcess > 1000*20)) {
 				process();
+				lastProcess = now;
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
