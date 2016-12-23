@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 
 import asap.bml.ext.bmlt.BMLTInfo;
 import asap.environment.AsapEnvironment;
+import asap.environment.AsapVirtualHuman;
 import hmi.animation.VJoint;
 import hmi.audioenvironment.AudioEnvironment;
 import hmi.environmentbase.Environment;
@@ -130,7 +131,28 @@ public class ArmandiaRealizerStarter
         // hre.setNavigationEnabled(false);
         // hre.setViewPoint(new float[]{0,2,4});
 
-        ee.loadVirtualHuman("", spec, "AsapRealizer demo");
+        AsapVirtualHuman mandia = ee.loadVirtualHuman("", spec, "AsapRealizer demo");
+        mandia.getRealizerPort().performBML("<bml xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"  id=\"bml1\" xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">"
+        		+ "<bmlt:blinkemitter id=\"blinkemitter1\" start=\"0\" range=\"0.5\" avgwaitingtime=\"4.5\"/>"
+        		+ "<bmlt:breathingemitter id=\"breathingemitter1\" start=\"0\" range=\"2\" avgwaitingtime=\"9\"/>"
+        		+ "<postureShift id=\"pose1\"><stance type=\"STANDING\"/><pose part=\"LEGS\" lexeme=\"LEGS_OPEN\"/></postureShift>"
+                + "<bmlt:noise id=\"noise1\" type=\"perlin\" joint=\"vl5\" start=\"0\">"
+                + "  <bmlt:parameter name=\"basefreqx\" value=\"0.5\"/>"
+                + "  <bmlt:parameter name=\"baseamplitudex\" value=\"0.035\"/>"
+                + "  <bmlt:parameter name=\"basefreqy\" value=\"0.3\"/>"
+                + "  <bmlt:parameter name=\"baseamplitudey\" value=\"0.02\"/>"
+                + "   <bmlt:parameter name=\"basefreqz\" value=\"0.3\"/>"
+                + "  <bmlt:parameter name=\"baseamplitudez\" value=\"0.02\"/>"
+                + "</bmlt:noise>"
+                + "<bmlt:noise id=\"noise2\" type=\"perlin\" joint=\"skullbase\" start=\"0\">"
+                + "  <bmlt:parameter name=\"basefreqx\" value=\"1.25\"/>"
+                + "  <bmlt:parameter name=\"baseamplitudex\" value=\"0.08\"/>"
+                + "  <bmlt:parameter name=\"basefreqy\" value=\"1.25\"/>"
+                + "  <bmlt:parameter name=\"baseamplitudey\" value=\"0.02\"/>"
+                + "  <bmlt:parameter name=\"basefreqy\" value=\"1.25\"/>"
+                + "  <bmlt:parameter name=\"baseamplitudey\" value=\"0.02\"/>"
+                + "</bmlt:noise>"
+        		+ "</bml>");
 
         j.addWindowListener(new java.awt.event.WindowAdapter()
         {

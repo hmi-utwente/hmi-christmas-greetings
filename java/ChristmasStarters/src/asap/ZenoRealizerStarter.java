@@ -24,6 +24,7 @@ import saiba.bml.core.HeadBehaviour;
 import saiba.bml.core.PostureShiftBehaviour;
 import asap.bml.ext.bmlt.BMLTInfo;
 import asap.environment.AsapEnvironment;
+import asap.environment.AsapVirtualHuman;
 
 /**
  * Simple demo for the AsapRealizer+environment
@@ -71,8 +72,8 @@ public class ZenoRealizerStarter
 		clock.addClockListener(ee);
 
         System.out.println("loading spec "+spec);
-        ee.loadVirtualHuman("", spec, "AsapRealizer -- HMI Christmas Greetings");
-
+        AsapVirtualHuman zeno = ee.loadVirtualHuman("", spec, "AsapRealizer -- HMI Christmas Greetings");
+        zeno.getRealizerPort().performBML("<bml xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"  id=\"bml1\" xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\"><bmlt:blinkemitter id=\"blinkemitter1\" start=\"0\" range=\"0.5\" avgwaitingtime=\"6.5\"/></bml>");
         j.addWindowListener(new java.awt.event.WindowAdapter()
         {
             public void windowClosing(WindowEvent winEvt)
